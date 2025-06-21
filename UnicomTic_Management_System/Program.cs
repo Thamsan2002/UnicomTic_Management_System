@@ -33,7 +33,7 @@ namespace UnicomTic_Management_System
             */
 
             //Application.Run(new StaffRegisterForm());
-            Application.Run(new LoginForm());
+            //Application.Run(new LoginForm());
         }
     }
 }
