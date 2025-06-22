@@ -123,21 +123,23 @@ namespace UnicomTic_Management_System.Controllers
             {
                 using(SQLiteConnection connect = DatabaseManager.GetConnection()) 
                 {
-                    SQLiteCommand cmd = connect.CreateCommand();
-                    cmd.CommandText = "SELECT * FROM Users WHERE (Name = @name OR GMail = @mail) AND Password = @pas";
-                    cmd.Parameters.AddWithValue("@name",user.UserName);
-                    cmd.Parameters.AddWithValue("@mail",user.UserName);
-                    cmd.Parameters.AddWithValue("@pas",user.Password);
-                    var Result = cmd.ExecuteReader();
-                    if (Result.Read()) 
+                    using (SQLiteCommand cmd = connect.CreateCommand()) 
                     {
-                        LoginedUSer.UserName = Result["Name"].ToString();
-                        LoginedUSer.Gmail = Result["GMail"].ToString();
-                        LoginedUSer.Role = Result["Role"].ToString();
-                        return LoginedUSer;
+                        cmd.CommandText = "SELECT * FROM Users WHERE (Name = @name OR GMail = @mail) AND Password = @pas";
+                        cmd.Parameters.AddWithValue("@name", user.UserName);
+                        cmd.Parameters.AddWithValue("@mail", user.UserName);
+                        cmd.Parameters.AddWithValue("@pas", user.Password);
+                        var Result = cmd.ExecuteReader();
+                        if (Result.Read())
+                        {
+                            LoginedUSer.UserName = Result["Name"].ToString();
+                            LoginedUSer.Gmail = Result["GMail"].ToString();
+                            LoginedUSer.Role = Result["Role"].ToString();
+                            LoginedUSer.Id = Convert.ToInt32((Result["Id"]));
+                            return LoginedUSer;
+                        }
+                        else { return LoginedUSer; }
                     }
-                    else { return LoginedUSer; }
-                    
                 }
             }
         }

@@ -67,18 +67,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(343, 21);
+            this.label1.Location = new System.Drawing.Point(457, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 13);
+            this.label1.Size = new System.Drawing.Size(145, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "STUDENT REGISTER";
             // 
             // textBox_LastName
             // 
             this.textBox_LastName.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_LastName.Location = new System.Drawing.Point(490, 75);
+            this.textBox_LastName.Location = new System.Drawing.Point(653, 92);
+            this.textBox_LastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_LastName.Name = "textBox_LastName";
-            this.textBox_LastName.Size = new System.Drawing.Size(197, 20);
+            this.textBox_LastName.Size = new System.Drawing.Size(261, 22);
             this.textBox_LastName.TabIndex = 1;
             this.textBox_LastName.Text = "Enter LastName";
             this.textBox_LastName.Click += new System.EventHandler(this.textBox_LastName_Click);
@@ -87,9 +89,10 @@
             // textBox_NicNo
             // 
             this.textBox_NicNo.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_NicNo.Location = new System.Drawing.Point(490, 172);
+            this.textBox_NicNo.Location = new System.Drawing.Point(653, 212);
+            this.textBox_NicNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_NicNo.Name = "textBox_NicNo";
-            this.textBox_NicNo.Size = new System.Drawing.Size(197, 20);
+            this.textBox_NicNo.Size = new System.Drawing.Size(261, 22);
             this.textBox_NicNo.TabIndex = 2;
             this.textBox_NicNo.Text = "Enter NIC Number";
             this.textBox_NicNo.Click += new System.EventHandler(this.textBox_NicNo_Click);
@@ -98,9 +101,10 @@
             // textBox_Phone
             // 
             this.textBox_Phone.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_Phone.Location = new System.Drawing.Point(490, 124);
+            this.textBox_Phone.Location = new System.Drawing.Point(653, 153);
+            this.textBox_Phone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_Phone.Name = "textBox_Phone";
-            this.textBox_Phone.Size = new System.Drawing.Size(197, 20);
+            this.textBox_Phone.Size = new System.Drawing.Size(261, 22);
             this.textBox_Phone.TabIndex = 3;
             this.textBox_Phone.Text = "Enter Mobile Number";
             this.textBox_Phone.Click += new System.EventHandler(this.textBox_Phone_Click);
@@ -109,9 +113,10 @@
             // textBox_Address
             // 
             this.textBox_Address.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_Address.Location = new System.Drawing.Point(128, 172);
+            this.textBox_Address.Location = new System.Drawing.Point(171, 212);
+            this.textBox_Address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_Address.Name = "textBox_Address";
-            this.textBox_Address.Size = new System.Drawing.Size(197, 20);
+            this.textBox_Address.Size = new System.Drawing.Size(261, 22);
             this.textBox_Address.TabIndex = 4;
             this.textBox_Address.Text = "Enter Address";
             this.textBox_Address.Click += new System.EventHandler(this.textBox_Address_Click);
@@ -120,9 +125,10 @@
             // textBox_Gmail
             // 
             this.textBox_Gmail.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_Gmail.Location = new System.Drawing.Point(128, 124);
+            this.textBox_Gmail.Location = new System.Drawing.Point(171, 153);
+            this.textBox_Gmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_Gmail.Name = "textBox_Gmail";
-            this.textBox_Gmail.Size = new System.Drawing.Size(197, 20);
+            this.textBox_Gmail.Size = new System.Drawing.Size(261, 22);
             this.textBox_Gmail.TabIndex = 5;
             this.textBox_Gmail.Text = "Enter GMail Address";
             this.textBox_Gmail.Click += new System.EventHandler(this.textBox_Gmail_Click);
@@ -131,9 +137,10 @@
             // textBox_FirstName
             // 
             this.textBox_FirstName.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_FirstName.Location = new System.Drawing.Point(128, 75);
+            this.textBox_FirstName.Location = new System.Drawing.Point(171, 92);
+            this.textBox_FirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_FirstName.Name = "textBox_FirstName";
-            this.textBox_FirstName.Size = new System.Drawing.Size(197, 20);
+            this.textBox_FirstName.Size = new System.Drawing.Size(261, 22);
             this.textBox_FirstName.TabIndex = 6;
             this.textBox_FirstName.Text = "Enter FirstName";
             this.textBox_FirstName.Click += new System.EventHandler(this.textBox_FirstName_Click);
@@ -142,18 +149,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 127);
+            this.label2.Location = new System.Drawing.Point(45, 156);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(42, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "GMail";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(397, 127);
+            this.label3.Location = new System.Drawing.Point(529, 156);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.Size = new System.Drawing.Size(66, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "MobileNo";
             // 
@@ -161,44 +170,49 @@
             // 
             this.label_Department.AutoSize = true;
             this.label_Department.ForeColor = System.Drawing.Color.Red;
-            this.label_Department.Location = new System.Drawing.Point(487, 205);
+            this.label_Department.Location = new System.Drawing.Point(649, 252);
+            this.label_Department.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Department.Name = "label_Department";
-            this.label_Department.Size = new System.Drawing.Size(0, 13);
+            this.label_Department.Size = new System.Drawing.Size(0, 16);
             this.label_Department.TabIndex = 9;
             // 
             // label_Course
             // 
             this.label_Course.AutoSize = true;
             this.label_Course.ForeColor = System.Drawing.Color.Red;
-            this.label_Course.Location = new System.Drawing.Point(125, 251);
+            this.label_Course.Location = new System.Drawing.Point(167, 309);
+            this.label_Course.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Course.Name = "label_Course";
-            this.label_Course.Size = new System.Drawing.Size(0, 13);
+            this.label_Course.Size = new System.Drawing.Size(0, 16);
             this.label_Course.TabIndex = 10;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 224);
+            this.label6.Location = new System.Drawing.Point(45, 276);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.Size = new System.Drawing.Size(52, 16);
             this.label6.TabIndex = 11;
             this.label6.Text = "Gender";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(399, 175);
+            this.label7.Location = new System.Drawing.Point(532, 215);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.Size = new System.Drawing.Size(45, 16);
             this.label7.TabIndex = 12;
             this.label7.Text = "NicNo";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(397, 78);
+            this.label8.Location = new System.Drawing.Point(529, 96);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.Size = new System.Drawing.Size(69, 16);
             this.label8.TabIndex = 13;
             this.label8.Text = "LastName";
             // 
@@ -206,26 +220,29 @@
             // 
             this.label_NicNo.AutoSize = true;
             this.label_NicNo.ForeColor = System.Drawing.Color.Red;
-            this.label_NicNo.Location = new System.Drawing.Point(487, 156);
+            this.label_NicNo.Location = new System.Drawing.Point(649, 192);
+            this.label_NicNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_NicNo.Name = "label_NicNo";
-            this.label_NicNo.Size = new System.Drawing.Size(0, 13);
+            this.label_NicNo.Size = new System.Drawing.Size(0, 16);
             this.label_NicNo.TabIndex = 14;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(399, 224);
+            this.label10.Location = new System.Drawing.Point(532, 276);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.Size = new System.Drawing.Size(77, 16);
             this.label10.TabIndex = 15;
             this.label10.Text = "Department";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(34, 271);
+            this.label11.Location = new System.Drawing.Point(45, 334);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.Size = new System.Drawing.Size(50, 16);
             this.label11.TabIndex = 16;
             this.label11.Text = "Course";
             // 
@@ -233,26 +250,29 @@
             // 
             this.label_Gender.AutoSize = true;
             this.label_Gender.ForeColor = System.Drawing.Color.Red;
-            this.label_Gender.Location = new System.Drawing.Point(125, 205);
+            this.label_Gender.Location = new System.Drawing.Point(167, 252);
+            this.label_Gender.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Gender.Name = "label_Gender";
-            this.label_Gender.Size = new System.Drawing.Size(0, 13);
+            this.label_Gender.Size = new System.Drawing.Size(0, 16);
             this.label_Gender.TabIndex = 17;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(34, 175);
+            this.label13.Location = new System.Drawing.Point(45, 215);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(45, 13);
+            this.label13.Size = new System.Drawing.Size(58, 16);
             this.label13.TabIndex = 18;
             this.label13.Text = "Address";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(28, 78);
+            this.label14.Location = new System.Drawing.Point(37, 96);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(54, 13);
+            this.label14.Size = new System.Drawing.Size(69, 16);
             this.label14.TabIndex = 19;
             this.label14.Text = "FirstName";
             // 
@@ -260,54 +280,60 @@
             // 
             this.label_Phone.AutoSize = true;
             this.label_Phone.ForeColor = System.Drawing.Color.Red;
-            this.label_Phone.Location = new System.Drawing.Point(487, 108);
+            this.label_Phone.Location = new System.Drawing.Point(649, 133);
+            this.label_Phone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Phone.Name = "label_Phone";
-            this.label_Phone.Size = new System.Drawing.Size(0, 13);
+            this.label_Phone.Size = new System.Drawing.Size(0, 16);
             this.label_Phone.TabIndex = 20;
             // 
             // label_Address
             // 
             this.label_Address.AutoSize = true;
             this.label_Address.ForeColor = System.Drawing.Color.Red;
-            this.label_Address.Location = new System.Drawing.Point(125, 156);
+            this.label_Address.Location = new System.Drawing.Point(167, 192);
+            this.label_Address.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Address.Name = "label_Address";
-            this.label_Address.Size = new System.Drawing.Size(0, 13);
+            this.label_Address.Size = new System.Drawing.Size(0, 16);
             this.label_Address.TabIndex = 21;
             // 
             // label_FirstName
             // 
             this.label_FirstName.AutoSize = true;
             this.label_FirstName.ForeColor = System.Drawing.Color.Red;
-            this.label_FirstName.Location = new System.Drawing.Point(125, 59);
+            this.label_FirstName.Location = new System.Drawing.Point(167, 73);
+            this.label_FirstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_FirstName.Name = "label_FirstName";
-            this.label_FirstName.Size = new System.Drawing.Size(0, 13);
+            this.label_FirstName.Size = new System.Drawing.Size(0, 16);
             this.label_FirstName.TabIndex = 22;
             // 
             // label_Gmail
             // 
             this.label_Gmail.AutoSize = true;
             this.label_Gmail.ForeColor = System.Drawing.Color.Red;
-            this.label_Gmail.Location = new System.Drawing.Point(125, 108);
+            this.label_Gmail.Location = new System.Drawing.Point(167, 133);
+            this.label_Gmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Gmail.Name = "label_Gmail";
-            this.label_Gmail.Size = new System.Drawing.Size(0, 13);
+            this.label_Gmail.Size = new System.Drawing.Size(0, 16);
             this.label_Gmail.TabIndex = 23;
             // 
             // label_LastName
             // 
             this.label_LastName.AutoSize = true;
             this.label_LastName.ForeColor = System.Drawing.Color.Red;
-            this.label_LastName.Location = new System.Drawing.Point(487, 59);
+            this.label_LastName.Location = new System.Drawing.Point(649, 73);
+            this.label_LastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_LastName.Name = "label_LastName";
-            this.label_LastName.Size = new System.Drawing.Size(0, 13);
+            this.label_LastName.Size = new System.Drawing.Size(0, 16);
             this.label_LastName.TabIndex = 24;
             // 
             // comboBox_Course
             // 
             this.comboBox_Course.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.comboBox_Course.FormattingEnabled = true;
-            this.comboBox_Course.Location = new System.Drawing.Point(128, 267);
+            this.comboBox_Course.Location = new System.Drawing.Point(171, 329);
+            this.comboBox_Course.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_Course.Name = "comboBox_Course";
-            this.comboBox_Course.Size = new System.Drawing.Size(197, 21);
+            this.comboBox_Course.Size = new System.Drawing.Size(261, 24);
             this.comboBox_Course.TabIndex = 25;
             this.comboBox_Course.Text = "Choose Course";
             this.comboBox_Course.DropDown += new System.EventHandler(this.comboBox_Course_DropDown);
@@ -318,9 +344,10 @@
             // 
             this.comboBox_Department.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.comboBox_Department.FormattingEnabled = true;
-            this.comboBox_Department.Location = new System.Drawing.Point(490, 221);
+            this.comboBox_Department.Location = new System.Drawing.Point(653, 272);
+            this.comboBox_Department.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_Department.Name = "comboBox_Department";
-            this.comboBox_Department.Size = new System.Drawing.Size(197, 21);
+            this.comboBox_Department.Size = new System.Drawing.Size(261, 24);
             this.comboBox_Department.TabIndex = 26;
             this.comboBox_Department.Text = "Choose Department";
             this.comboBox_Department.DropDown += new System.EventHandler(this.comboBox_Department_DropDown);
@@ -330,9 +357,10 @@
             // radioButton_Male
             // 
             this.radioButton_Male.AutoSize = true;
-            this.radioButton_Male.Location = new System.Drawing.Point(128, 222);
+            this.radioButton_Male.Location = new System.Drawing.Point(171, 273);
+            this.radioButton_Male.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton_Male.Name = "radioButton_Male";
-            this.radioButton_Male.Size = new System.Drawing.Size(48, 17);
+            this.radioButton_Male.Size = new System.Drawing.Size(58, 20);
             this.radioButton_Male.TabIndex = 27;
             this.radioButton_Male.TabStop = true;
             this.radioButton_Male.Text = "Male";
@@ -342,9 +370,10 @@
             // radioButton_Female
             // 
             this.radioButton_Female.AutoSize = true;
-            this.radioButton_Female.Location = new System.Drawing.Point(195, 222);
+            this.radioButton_Female.Location = new System.Drawing.Point(260, 273);
+            this.radioButton_Female.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton_Female.Name = "radioButton_Female";
-            this.radioButton_Female.Size = new System.Drawing.Size(59, 17);
+            this.radioButton_Female.Size = new System.Drawing.Size(74, 20);
             this.radioButton_Female.TabIndex = 28;
             this.radioButton_Female.TabStop = true;
             this.radioButton_Female.Text = "Female";
@@ -356,9 +385,10 @@
             this.checkBox_Auto.AutoSize = true;
             this.checkBox_Auto.Checked = true;
             this.checkBox_Auto.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Auto.Location = new System.Drawing.Point(37, 306);
+            this.checkBox_Auto.Location = new System.Drawing.Point(49, 377);
+            this.checkBox_Auto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox_Auto.Name = "checkBox_Auto";
-            this.checkBox_Auto.Size = new System.Drawing.Size(332, 17);
+            this.checkBox_Auto.Size = new System.Drawing.Size(420, 20);
             this.checkBox_Auto.TabIndex = 29;
             this.checkBox_Auto.Text = "Choose LastName as a UserName and Autogenarated Password";
             this.checkBox_Auto.UseVisualStyleBackColor = true;
@@ -367,9 +397,10 @@
             // checkBox_Manual
             // 
             this.checkBox_Manual.AutoSize = true;
-            this.checkBox_Manual.Location = new System.Drawing.Point(37, 329);
+            this.checkBox_Manual.Location = new System.Drawing.Point(49, 405);
+            this.checkBox_Manual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox_Manual.Name = "checkBox_Manual";
-            this.checkBox_Manual.Size = new System.Drawing.Size(230, 17);
+            this.checkBox_Manual.Size = new System.Drawing.Size(291, 20);
             this.checkBox_Manual.TabIndex = 30;
             this.checkBox_Manual.Text = "Choose UserName and Password Manually";
             this.checkBox_Manual.UseVisualStyleBackColor = true;
@@ -377,9 +408,10 @@
             // 
             // button_Back
             // 
-            this.button_Back.Location = new System.Drawing.Point(224, 358);
+            this.button_Back.Location = new System.Drawing.Point(299, 441);
+            this.button_Back.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Back.Name = "button_Back";
-            this.button_Back.Size = new System.Drawing.Size(75, 34);
+            this.button_Back.Size = new System.Drawing.Size(100, 42);
             this.button_Back.TabIndex = 31;
             this.button_Back.Text = "BACK";
             this.button_Back.UseVisualStyleBackColor = true;
@@ -387,9 +419,10 @@
             // 
             // button_Register
             // 
-            this.button_Register.Location = new System.Drawing.Point(490, 358);
+            this.button_Register.Location = new System.Drawing.Point(653, 441);
+            this.button_Register.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Register.Name = "button_Register";
-            this.button_Register.Size = new System.Drawing.Size(75, 34);
+            this.button_Register.Size = new System.Drawing.Size(100, 42);
             this.button_Register.TabIndex = 32;
             this.button_Register.Text = "REGISTER";
             this.button_Register.UseVisualStyleBackColor = true;
@@ -397,9 +430,10 @@
             // 
             // button_Clear
             // 
-            this.button_Clear.Location = new System.Drawing.Point(361, 358);
+            this.button_Clear.Location = new System.Drawing.Point(481, 441);
+            this.button_Clear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(75, 34);
+            this.button_Clear.Size = new System.Drawing.Size(100, 42);
             this.button_Clear.TabIndex = 33;
             this.button_Clear.Text = "CLEAR";
             this.button_Clear.UseVisualStyleBackColor = true;
@@ -407,9 +441,9 @@
             // 
             // StudentRegisterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 426);
+            this.ClientSize = new System.Drawing.Size(1068, 524);
             this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.button_Register);
             this.Controls.Add(this.button_Back);
@@ -444,6 +478,8 @@
             this.Controls.Add(this.textBox_NicNo);
             this.Controls.Add(this.textBox_LastName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "StudentRegisterForm";
             this.Text = "StudentRegisterForm";
             this.Load += new System.EventHandler(this.StudentRegisterForm_Load);

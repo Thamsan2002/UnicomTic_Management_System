@@ -65,6 +65,8 @@ namespace UnicomTic_Management_System.Views
             else 
             {
                 new DashBoard(LoginedUSer.Gmail,LoginedUSer.UserName,LoginedUSer.Role).ShowDialog();
+               textBox_Password.Text=null;
+               textBox_UserName.Text=null;
             }
         }
     }

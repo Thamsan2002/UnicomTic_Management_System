@@ -109,6 +109,12 @@
     <Compile Include="Views\AdminRegisterForm.Designer.cs">
       <DependentUpon>AdminRegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminUpdateForm.Designer.cs">
+      <DependentUpon>AdminUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CoursesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,12 @@
     <Compile Include="Views\LecturerRegisterForm.Designer.cs">
       <DependentUpon>LecturerRegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\LecturerUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LecturerUpdateForm.Designer.cs">
+      <DependentUpon>LecturerUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,11 +157,23 @@
     <Compile Include="Views\StaffRegisterForm.Designer.cs">
       <DependentUpon>StaffRegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\StaffUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\StaffUpdateForm.Designer.cs">
+      <DependentUpon>StaffUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\StudentRegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\StudentRegisterForm.Designer.cs">
       <DependentUpon>StudentRegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\StudentUpdateForm.Designer.cs">
+      <DependentUpon>StudentUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SubjectForm.cs">
       <SubType>Form</SubType>
@@ -163,6 +187,30 @@
     <Compile Include="Views\UserCreation.Designer.cs">
       <DependentUpon>UserCreation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewAdminForm.Designer.cs">
+      <DependentUpon>ViewAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewLecturerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewLecturerForm.Designer.cs">
+      <DependentUpon>ViewLecturerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewStaffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewStaffForm.Designer.cs">
+      <DependentUpon>ViewStaffForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewStudentForm.Designer.cs">
+      <DependentUpon>ViewStudentForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -174,6 +222,9 @@
     </Compile>
     <EmbeddedResource Include="Views\AdminRegisterForm.resx">
       <DependentUpon>AdminRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminUpdateForm.resx">
+      <DependentUpon>AdminUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CoursesForm.resx">
       <DependentUpon>CoursesForm.cs</DependentUpon>
@@ -187,14 +238,23 @@
     <EmbeddedResource Include="Views\LecturerRegisterForm.resx">
       <DependentUpon>LecturerRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\LecturerUpdateForm.resx">
+      <DependentUpon>LecturerUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\StaffRegisterForm.resx">
       <DependentUpon>StaffRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\StaffUpdateForm.resx">
+      <DependentUpon>StaffUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\StudentRegisterForm.resx">
       <DependentUpon>StudentRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\StudentUpdateForm.resx">
+      <DependentUpon>StudentUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SubjectForm.resx">
       <DependentUpon>SubjectForm.cs</DependentUpon>
@@ -202,6 +262,19 @@
     <EmbeddedResource Include="Views\UserCreation.resx">
       <DependentUpon>UserCreation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewAdminForm.resx">
+      <DependentUpon>ViewAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewLecturerForm.resx">
+      <DependentUpon>ViewLecturerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewStaffForm.resx">
+      <DependentUpon>ViewStaffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewStudentForm.resx">
+      <DependentUpon>ViewStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bin\Debug\unicomtic.db" />
     <None Include="bin\Debug\UnicomTic_Management_System.exe.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -213,7 +286,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="unicomtic.db" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

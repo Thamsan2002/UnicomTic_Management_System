@@ -29,14 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button_StudentManage = new System.Windows.Forms.Button();
+            this.button_LecturerManage = new System.Windows.Forms.Button();
+            this.button_StaffManage = new System.Windows.Forms.Button();
+            this.button_AdminManage = new System.Windows.Forms.Button();
+            this.button_CourseManage = new System.Windows.Forms.Button();
             this.groupBox_User = new System.Windows.Forms.GroupBox();
+            this.label_UserName = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label_Gmail = new System.Windows.Forms.Label();
-            this.label_UserName = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel_Main = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.groupBox_User.SuspendLayout();
             this.SuspendLayout();
@@ -44,6 +49,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.button_StudentManage);
+            this.panel1.Controls.Add(this.button_LecturerManage);
+            this.panel1.Controls.Add(this.button_StaffManage);
+            this.panel1.Controls.Add(this.button_AdminManage);
+            this.panel1.Controls.Add(this.button_CourseManage);
             this.panel1.Controls.Add(this.groupBox_User);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -51,42 +61,55 @@
             this.panel1.Size = new System.Drawing.Size(217, 511);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // button_StudentManage
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(217, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(817, 46);
-            this.panel2.TabIndex = 1;
+            this.button_StudentManage.Location = new System.Drawing.Point(39, 406);
+            this.button_StudentManage.Name = "button_StudentManage";
+            this.button_StudentManage.Size = new System.Drawing.Size(129, 23);
+            this.button_StudentManage.TabIndex = 5;
+            this.button_StudentManage.Text = "Student Manage";
+            this.button_StudentManage.UseVisualStyleBackColor = true;
+            this.button_StudentManage.Click += new System.EventHandler(this.button_StudentManage_Click);
             // 
-            // panel3
+            // button_LecturerManage
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(217, 46);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(817, 465);
-            this.panel3.TabIndex = 2;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.button_LecturerManage.Location = new System.Drawing.Point(39, 356);
+            this.button_LecturerManage.Name = "button_LecturerManage";
+            this.button_LecturerManage.Size = new System.Drawing.Size(129, 23);
+            this.button_LecturerManage.TabIndex = 4;
+            this.button_LecturerManage.Text = "Lecturer Manage";
+            this.button_LecturerManage.UseVisualStyleBackColor = true;
+            this.button_LecturerManage.Click += new System.EventHandler(this.button_LecturerManage_Click);
             // 
-            // label1
+            // button_StaffManage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "UserName";
+            this.button_StaffManage.Location = new System.Drawing.Point(44, 305);
+            this.button_StaffManage.Name = "button_StaffManage";
+            this.button_StaffManage.Size = new System.Drawing.Size(129, 23);
+            this.button_StaffManage.TabIndex = 3;
+            this.button_StaffManage.Text = "Staff Manage";
+            this.button_StaffManage.UseVisualStyleBackColor = true;
+            this.button_StaffManage.Click += new System.EventHandler(this.button_StaffManage_Click);
             // 
-            // label2
+            // button_AdminManage
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Gmail ";
+            this.button_AdminManage.Location = new System.Drawing.Point(44, 229);
+            this.button_AdminManage.Name = "button_AdminManage";
+            this.button_AdminManage.Size = new System.Drawing.Size(129, 23);
+            this.button_AdminManage.TabIndex = 2;
+            this.button_AdminManage.Text = "Admin Manage";
+            this.button_AdminManage.UseVisualStyleBackColor = true;
+            this.button_AdminManage.Click += new System.EventHandler(this.button_AdminManage_Click);
+            // 
+            // button_CourseManage
+            // 
+            this.button_CourseManage.Location = new System.Drawing.Point(44, 131);
+            this.button_CourseManage.Name = "button_CourseManage";
+            this.button_CourseManage.Size = new System.Drawing.Size(129, 23);
+            this.button_CourseManage.TabIndex = 1;
+            this.button_CourseManage.Text = "Course Manage";
+            this.button_CourseManage.UseVisualStyleBackColor = true;
+            this.button_CourseManage.Click += new System.EventHandler(this.button_CourseManage_Click);
             // 
             // groupBox_User
             // 
@@ -103,6 +126,14 @@
             this.groupBox_User.TabStop = false;
             this.groupBox_User.Text = "hello";
             // 
+            // label_UserName
+            // 
+            this.label_UserName.AutoSize = true;
+            this.label_UserName.Location = new System.Drawing.Point(85, 46);
+            this.label_UserName.Name = "label_UserName";
+            this.label_UserName.Size = new System.Drawing.Size(0, 13);
+            this.label_UserName.TabIndex = 1;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -113,29 +144,59 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Log Out";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label_Gmail
             // 
             this.label_Gmail.AutoSize = true;
             this.label_Gmail.Location = new System.Drawing.Point(85, 18);
             this.label_Gmail.Name = "label_Gmail";
-            this.label_Gmail.Size = new System.Drawing.Size(0, 16);
+            this.label_Gmail.Size = new System.Drawing.Size(0, 13);
             this.label_Gmail.TabIndex = 0;
             // 
-            // label_UserName
+            // label2
             // 
-            this.label_UserName.AutoSize = true;
-            this.label_UserName.Location = new System.Drawing.Point(85, 46);
-            this.label_UserName.Name = "label_UserName";
-            this.label_UserName.Size = new System.Drawing.Size(0, 16);
-            this.label_UserName.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Gmail ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "UserName";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(217, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(817, 46);
+            this.panel2.TabIndex = 1;
+            // 
+            // panel_Main
+            // 
+            this.panel_Main.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel_Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_Main.Location = new System.Drawing.Point(217, 46);
+            this.panel_Main.Name = "panel_Main";
+            this.panel_Main.Size = new System.Drawing.Size(817, 465);
+            this.panel_Main.TabIndex = 2;
+            this.panel_Main.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // DashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 511);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel_Main);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "DashBoard";
@@ -152,12 +213,17 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel_Main;
         private System.Windows.Forms.GroupBox groupBox_User;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label_UserName;
         private System.Windows.Forms.Label label_Gmail;
+        private System.Windows.Forms.Button button_LecturerManage;
+        private System.Windows.Forms.Button button_StaffManage;
+        private System.Windows.Forms.Button button_AdminManage;
+        private System.Windows.Forms.Button button_CourseManage;
+        private System.Windows.Forms.Button button_StudentManage;
     }
 }

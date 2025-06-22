@@ -4,7 +4,9 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnicomTic_Management_System.Controllers;
 using UnicomTic_Management_System.Database_Uses;
+using UnicomTic_Management_System.Models;
 
 namespace UnicomTic_Management_System.Repositories
 {
@@ -174,6 +176,7 @@ namespace UnicomTic_Management_System.Repositories
                 return result;
             }
         }
+        
     }
 }
 

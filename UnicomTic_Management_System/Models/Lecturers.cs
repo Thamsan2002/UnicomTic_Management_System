@@ -23,7 +23,6 @@ namespace UnicomTic_Management_System.Models
         public string CourseName { get; set; }
         public int DepartmentID { get; set; }
         public string DepartmentName { get; set; }
-        public string Gmail { get; set; }
 
 
     }

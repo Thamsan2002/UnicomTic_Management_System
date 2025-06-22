@@ -373,6 +373,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminRegisterForm";
             this.Text = "Admin Register";
             this.Load += new System.EventHandler(this.Form1_Load);

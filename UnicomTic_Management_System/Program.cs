@@ -21,19 +21,15 @@ namespace UnicomTic_Management_System
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //if exists user table run login form or run admin register form
-            /*
+
             var result = Migration.ExistsUsersTable();
 
-            if ((int)result != 1)
+            if ((int)result == 0)
             {
-                Application.Run(new AdminRegisterForm());
-                Application.Run(new SignUpForm());
+                Application.Run(new AdminRegisterForm("SuperAdmin"));
+                Application.Run(new LoginForm());
             }
             else { Application.Run(new LoginForm()); }
-            */
-
-            //Application.Run(new StaffRegisterForm());
-            //Application.Run(new LoginForm());
         }
     }
 }

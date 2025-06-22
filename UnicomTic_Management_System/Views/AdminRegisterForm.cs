@@ -18,11 +18,22 @@ namespace UnicomTic_Management_System.Views
         {
             InitializeComponent();
         }
+        public AdminRegisterForm(string AccessLevel)
+        {
+            InitializeComponent();
+            admin.AccessLevel = AccessLevel;
+        }
+        private DashBoard parentform;
+        public AdminRegisterForm(DashBoard dashBoard)
+        {
+            InitializeComponent();
+            parentform = dashBoard;
+            admin.AccessLevel = "Admin";
+        }
         Admins admin = new Admins();
         AdminController adminControler = new AdminController();
         Users users = new Users();
         UserController userController = new UserController();
-        List<string> Deta = new List<string>();
         private void Form1_Load(object sender, EventArgs e)
         { 
 
@@ -40,7 +51,8 @@ namespace UnicomTic_Management_System.Views
         }
         private void CheckEmptyFields(string CurrentPlace) 
         {
-            Deta = adminControler.CheckEmptyVariables(admin);
+            List<string> Deta = new List<string>();
+            Deta = adminControler.CheckEmptyVariables(admin,users.Gmail);
             if (Deta.Contains("FirstName")) { la_FirstName.Text = "*Enter Your FirstName"; }
             if (CurrentPlace == "LastName") {return; }
             if (Deta.Contains("LastName")) { la_LastName.Text = "*Enter Your LastName"; }
@@ -72,7 +84,7 @@ namespace UnicomTic_Management_System.Views
         private void Gmail_TextChanged(object sender, EventArgs e)
         {
             Gmail.ForeColor = Color.Black;
-            admin.Gmail = Gmail.Text.Trim();
+            users.Gmail = Gmail.Text.Trim();
             la_GMail.Text = null;
         }
         private void Phone_TextChanged(object sender, EventArgs e)
@@ -156,7 +168,8 @@ namespace UnicomTic_Management_System.Views
         }
         private void btn_back_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+            parentform.LoadForm(new ViewAdminForm(parentform));
         }
         private void btn_add_Click(object sender, EventArgs e)
         {
@@ -165,10 +178,8 @@ namespace UnicomTic_Management_System.Views
             else if (radiofemale.Checked) { admin.Gender = radiofemale.Text; }
             if (checkBox_Auto.Checked) { users.UserNameCreateType = "Auto"; }
             else if (checkBox_Manual.Checked) { users.UserNameCreateType = "Manual"; }
-            admin.AccessLevel = "Admin";
             admin.Date = DateTime.Now.ToString("yyyy-MM-dd");
             users.UserName = admin.LastName;
-            users.Gmail = admin.Gmail;
             users.Role = admin.AccessLevel;
             users.CreatedDate = admin.Date;
             users.UpdatedDate = admin.Date;
@@ -180,6 +191,7 @@ namespace UnicomTic_Management_System.Views
                 {
                     MessageBox.Show($"{UserRegisterStatus}");
                     ClearForm();
+                    if (admin.AccessLevel == "SuperAdmin") {Close(); }
                 }
                 
             }   

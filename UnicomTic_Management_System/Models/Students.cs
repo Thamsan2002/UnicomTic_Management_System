@@ -19,6 +19,8 @@ namespace UnicomTic_Management_System.Models
         public string StudentNo { get; set; }
         public int UserID { get; set; }
         public int CourseID { get; set; }
+        public string CourseName { get; set; }
         public int DepartmentID { get; set; }
+        public string DepartmentName { get; set; }
     }
 }

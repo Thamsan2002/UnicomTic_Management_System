@@ -19,6 +19,13 @@ namespace UnicomTic_Management_System.Views
         {
             InitializeComponent();
         }
+        private DashBoard parentform;
+        public StudentRegisterForm(DashBoard dashBoard)
+        {
+            InitializeComponent();
+            parentform = dashBoard;
+        }
+
         Students student = new Students();
         Users user = new Users();
         StudentController studentController = new StudentController();
@@ -226,6 +233,7 @@ namespace UnicomTic_Management_System.Views
         private void button_Back_Click(object sender, EventArgs e)
         {
             Close();
+            parentform.LoadForm(new ViewStudentForm(parentform));
         }
 
         private void button_Clear_Click(object sender, EventArgs e)

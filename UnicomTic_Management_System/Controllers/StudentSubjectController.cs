@@ -29,5 +29,12 @@ namespace UnicomTic_Management_System.Controllers
                 }
             }
         }
+        public static void DeleteStudentSubject(SQLiteConnection conn, int StudentID)
+        {
+            SQLiteCommand newcomand = conn.CreateCommand();
+            newcomand.CommandText = "DELETE FROM StudentSubject WHERE StudentsID =@sid";
+            newcomand.Parameters.AddWithValue("@sid", StudentID);
+            newcomand.ExecuteNonQuery();
+        }
     }
 }

@@ -46,6 +46,70 @@ namespace UnicomTic_Management_System.Controllers
                 }
             }
         }
+        public List<Students> LoadStudents(string Search)
+        {
+            List<Students> list = new List<Students>();
+            using (SQLiteConnection connect = DatabaseManager.GetConnection())
+            {
+                SQLiteCommand cmd = connect.CreateCommand();
+                cmd.CommandText = @"SELECT Students.* , Courses.Name AS CourseName ,Departments.Name AS DepartmentName FROM Students
+                                    LEFT JOIN Courses ON Courses.ID = Students.CoursesID
+                                    LEFT JOIN Departments ON Departments.ID =Students.DepartmentsID";
+                using (var Readings = cmd.ExecuteReader())
+                {
+                    while (Readings.Read())
+                    {
+                        if (string.IsNullOrWhiteSpace(Search))
+                        {
+                            list.Add(new Students
+                            {
+                                Id = Convert.ToInt32(Readings["ID"]),
+                                Date = Readings["Date"].ToString(),
+                                FirstName = Readings["FirstName"].ToString(),
+                                LastName = Readings["LastName"].ToString(),
+                                Address = Readings["Address"].ToString(),
+                                Phone = Readings["Phone"].ToString(),
+                                Gender = Readings["Gender"].ToString(),
+                                NicNo = Readings["NicNumber"].ToString(),
+                                StudentNo = Readings["StudentId"].ToString(),
+                                CourseName = Readings["CourseName"].ToString(),
+                                DepartmentName = Readings["DepartmentName"].ToString(),
+                                UserID = Convert.ToInt32(Readings["UsersID"]),
+                              
+                            });
+                        }
+                        else
+                        {
+                            for (int j = 1; j <= 11; j++)
+                            {
+                                if (Readings[j].ToString().Contains(Search))
+                                {
+                                    list.Add(new Students
+                                    {
+                                        Id = Convert.ToInt32(Readings["ID"]),
+                                        Date = Readings["Date"].ToString(),
+                                        FirstName = Readings["FirstName"].ToString(),
+                                        LastName = Readings["LastName"].ToString(),
+                                        Address = Readings["Address"].ToString(),
+                                        Phone = Readings["Phone"].ToString(),
+                                        Gender = Readings["Gender"].ToString(),
+                                        NicNo = Readings["NicNumber"].ToString(),
+                                        StudentNo = Readings["StudentId"].ToString(),
+                                        CourseName = Readings["CourseName"].ToString(),
+                                        DepartmentName = Readings["DepartmentName"].ToString(),
+                                        UserID = Convert.ToInt32(Readings["UsersID"]),
+
+                                    });
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            return list;
+        }
         public int StudentRegister(Students student)
         {
             if (!string.IsNullOrWhiteSpace(student.FirstName) && !string.IsNullOrWhiteSpace(student.LastName) && !string.IsNullOrWhiteSpace(student.NicNo)
@@ -107,6 +171,56 @@ namespace UnicomTic_Management_System.Controllers
                 UserController.DeleteUser(student.UserID);
                 return 0;
             }
+        }
+        public void DeleteStudent(Students student)
+        {
+            if (student.Id == 0) { MessageBox.Show("Select a Student!"); }
+            else
+            {
+                DialogResult result = MessageBox.Show("Confirm Delete This Student", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    using (SQLiteConnection connect = DatabaseManager.GetConnection())
+                    {
+                        LecturerStudent.DeleteStudentLecturer(connect, student.Id);
+                        StudentSubjectController.DeleteStudentSubject(connect, student.Id);
+                        SQLiteCommand cmd = connect.CreateCommand();
+                        cmd.CommandText = "DELETE FROM Students WHERE ID=@id";
+                        cmd.Parameters.AddWithValue("@id", student.Id);
+                        cmd.ExecuteNonQuery();
+                        UserController.DeleteUser(student.UserID);
+                        MessageBox.Show("Student Deleted Successfully");
+                    }
+                }
+            }
+        }
+        public void UpdateStudent(Students student)
+        {
+            if (!string.IsNullOrWhiteSpace(student.FirstName) && !string.IsNullOrWhiteSpace(student.LastName) && !string.IsNullOrWhiteSpace(student.NicNo) &&
+               !string.IsNullOrWhiteSpace(student.Phone) && !string.IsNullOrWhiteSpace(student.Gender) && !string.IsNullOrWhiteSpace(student.Address))
+            {
+                DialogResult result = MessageBox.Show("Make Changes for This Student", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    using (SQLiteConnection connect = DatabaseManager.GetConnection())
+                    {
+                        using (SQLiteCommand cmd = connect.CreateCommand())
+                        {
+                            cmd.CommandText = @"UPDATE Students SET FirstName=@fname, LastName=@lname, NicNumber=@nic, Phone=@phone, Gender=@gender, Address=@address WHERE ID=@id";
+                            cmd.Parameters.AddWithValue("@id", student.Id);
+                            cmd.Parameters.AddWithValue("@fname", student.FirstName);
+                            cmd.Parameters.AddWithValue("@lname", student.LastName);
+                            cmd.Parameters.AddWithValue("@nic", student.NicNo);
+                            cmd.Parameters.AddWithValue("@phone", student.Phone);
+                            cmd.Parameters.AddWithValue("@gender", student.Gender);
+                            cmd.Parameters.AddWithValue("@address", student.Address);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Updated Successfully");
+                        }
+                    }
+                }
+            }
+            else { MessageBox.Show("Fill All Details!"); }
         }
     }
 }

@@ -19,6 +19,12 @@ namespace UnicomTic_Management_System.Views
         {
             InitializeComponent();
         }
+        private DashBoard parentform;
+        public StaffRegisterForm(DashBoard dashBoard)
+        {
+            InitializeComponent();
+            parentform = dashBoard;
+        }
         Staffs staff =new Staffs();
         Users user = new Users();
         StaffController StaffController = new StaffController();
@@ -27,7 +33,7 @@ namespace UnicomTic_Management_System.Views
         private void CheckEmptyFields(string CurrentPlace)
         {
             List<string> Deta = new List<string>();
-            Deta = StaffController.CheckEmptyVariables(staff);
+            Deta = StaffController.CheckEmptyVariables(staff,user.Gmail);
             if (Deta.Contains("FirstName")) { label_FirstName.Text = "*FirstName is Required"; }
             if (CurrentPlace == "LastName") { return; }
             if (Deta.Contains("LastName")) { label_LastName.Text = "*LastName is Required"; }
@@ -187,7 +193,8 @@ namespace UnicomTic_Management_System.Views
 
         private void button_Back_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+            parentform.LoadForm(new ViewStaffForm(parentform));
         }
 
         private void button_Register_Click(object sender, EventArgs e)

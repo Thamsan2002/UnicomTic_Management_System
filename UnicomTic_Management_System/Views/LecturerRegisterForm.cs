@@ -19,6 +19,13 @@ namespace UnicomTic_Management_System.Views
         {
             InitializeComponent();
         }
+        private DashBoard parentform;
+
+        public LecturerRegisterForm(DashBoard dashBoard)
+        {
+            InitializeComponent();
+            parentform = dashBoard;
+        }
         Lecturers lecturer = new Lecturers();
         LecturerController lecturerController = new LecturerController();
         Users user = new Users();
@@ -42,7 +49,7 @@ namespace UnicomTic_Management_System.Views
         private void CheckEmptyFields(string CurrentPlace)
         {
             List<string> Data = new List<string>();
-            Data = lecturerController.CheckEmptyVariables(lecturer);
+            Data = lecturerController.CheckEmptyVariables(lecturer,user.Gmail);
             if (Data.Contains("FirstName")) { label_FirstName.Text = "*Enter Your FirstName"; }
             if (CurrentPlace == "LastName") { return; }
             if (Data.Contains("LastName")) { label_LastName.Text = "*Enter Your LastName"; }
@@ -114,7 +121,7 @@ namespace UnicomTic_Management_System.Views
         private void textBox_Gmail_TextChanged(object sender, EventArgs e)
         {
             textBox_Gmail.ForeColor = Color.Black;
-            lecturer.Gmail = textBox_Gmail.Text.Trim();
+            user.Gmail = textBox_Gmail.Text.Trim();
             label_Gmail.Text = null;
         }
 
@@ -243,6 +250,7 @@ namespace UnicomTic_Management_System.Views
         private void button_Back_Click(object sender, EventArgs e)
         {
             Close();
+            parentform.LoadForm(new ViewLecturerForm(parentform));
         }
 
         private void button_Clear_Click(object sender, EventArgs e)
@@ -261,7 +269,6 @@ namespace UnicomTic_Management_System.Views
             else if (checkBox_Manual.Checked) { user.UserNameCreateType = "Manual"; }
             lecturer.Date = DateTime.Now.ToString("yyyy-MM-dd");
             user.UserName = lecturer.LastName;
-            user.Gmail = lecturer.Gmail;
             user.Role = "Lecturer";
             user.CreatedDate = lecturer.Date;
             user.UpdatedDate = lecturer.Date;
