@@ -103,6 +103,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Migration.cs" />
+    <Compile Include="Views\AddExamTimeTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddExamTimeTableForm.Designer.cs">
+      <DependentUpon>AddExamTimeTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddTimeTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddTimeTableForm.Designer.cs">
+      <DependentUpon>AddTimeTableForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminRegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +193,18 @@
     <Compile Include="Views\SubjectForm.Designer.cs">
       <DependentUpon>SubjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UpdateClassTimeTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateClassTimeTableForm.Designer.cs">
+      <DependentUpon>UpdateClassTimeTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateExamTimeTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateExamTimeTableForm.Designer.cs">
+      <DependentUpon>UpdateExamTimeTableForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserCreation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +216,18 @@
     </Compile>
     <Compile Include="Views\ViewAdminForm.Designer.cs">
       <DependentUpon>ViewAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewClassTimeTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewClassTimeTableForm.Designer.cs">
+      <DependentUpon>ViewClassTimeTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewExamTimeTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewExamTimeTableForm.Designer.cs">
+      <DependentUpon>ViewExamTimeTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewLecturerForm.cs">
       <SubType>Form</SubType>
@@ -220,6 +256,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\AddExamTimeTableForm.resx">
+      <DependentUpon>AddExamTimeTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddTimeTableForm.resx">
+      <DependentUpon>AddTimeTableForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminRegisterForm.resx">
       <DependentUpon>AdminRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,11 +301,23 @@
     <EmbeddedResource Include="Views\SubjectForm.resx">
       <DependentUpon>SubjectForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UpdateClassTimeTableForm.resx">
+      <DependentUpon>UpdateClassTimeTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UpdateExamTimeTableForm.resx">
+      <DependentUpon>UpdateExamTimeTableForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserCreation.resx">
       <DependentUpon>UserCreation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ViewAdminForm.resx">
       <DependentUpon>ViewAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewClassTimeTableForm.resx">
+      <DependentUpon>ViewClassTimeTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewExamTimeTableForm.resx">
+      <DependentUpon>ViewExamTimeTableForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ViewLecturerForm.resx">
       <DependentUpon>ViewLecturerForm.cs</DependentUpon>

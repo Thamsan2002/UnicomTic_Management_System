@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button_TimeTable = new System.Windows.Forms.Button();
             this.button_StudentManage = new System.Windows.Forms.Button();
             this.button_LecturerManage = new System.Windows.Forms.Button();
             this.button_StaffManage = new System.Windows.Forms.Button();
@@ -42,6 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel_Main = new System.Windows.Forms.Panel();
+            this.button_ExamTimeTable = new System.Windows.Forms.Button();
+            this.button_Subject = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox_User.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +52,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.button_Subject);
+            this.panel1.Controls.Add(this.button_ExamTimeTable);
+            this.panel1.Controls.Add(this.button_TimeTable);
             this.panel1.Controls.Add(this.button_StudentManage);
             this.panel1.Controls.Add(this.button_LecturerManage);
             this.panel1.Controls.Add(this.button_StaffManage);
@@ -61,9 +67,19 @@
             this.panel1.Size = new System.Drawing.Size(217, 511);
             this.panel1.TabIndex = 0;
             // 
+            // button_TimeTable
+            // 
+            this.button_TimeTable.Location = new System.Drawing.Point(44, 220);
+            this.button_TimeTable.Name = "button_TimeTable";
+            this.button_TimeTable.Size = new System.Drawing.Size(129, 23);
+            this.button_TimeTable.TabIndex = 6;
+            this.button_TimeTable.Text = "Class TimeTable";
+            this.button_TimeTable.UseVisualStyleBackColor = true;
+            this.button_TimeTable.Click += new System.EventHandler(this.button_TimeTable_Click);
+            // 
             // button_StudentManage
             // 
-            this.button_StudentManage.Location = new System.Drawing.Point(39, 406);
+            this.button_StudentManage.Location = new System.Drawing.Point(44, 342);
             this.button_StudentManage.Name = "button_StudentManage";
             this.button_StudentManage.Size = new System.Drawing.Size(129, 23);
             this.button_StudentManage.TabIndex = 5;
@@ -73,7 +89,7 @@
             // 
             // button_LecturerManage
             // 
-            this.button_LecturerManage.Location = new System.Drawing.Point(39, 356);
+            this.button_LecturerManage.Location = new System.Drawing.Point(44, 381);
             this.button_LecturerManage.Name = "button_LecturerManage";
             this.button_LecturerManage.Size = new System.Drawing.Size(129, 23);
             this.button_LecturerManage.TabIndex = 4;
@@ -83,7 +99,7 @@
             // 
             // button_StaffManage
             // 
-            this.button_StaffManage.Location = new System.Drawing.Point(44, 305);
+            this.button_StaffManage.Location = new System.Drawing.Point(44, 422);
             this.button_StaffManage.Name = "button_StaffManage";
             this.button_StaffManage.Size = new System.Drawing.Size(129, 23);
             this.button_StaffManage.TabIndex = 3;
@@ -93,7 +109,7 @@
             // 
             // button_AdminManage
             // 
-            this.button_AdminManage.Location = new System.Drawing.Point(44, 229);
+            this.button_AdminManage.Location = new System.Drawing.Point(44, 466);
             this.button_AdminManage.Name = "button_AdminManage";
             this.button_AdminManage.Size = new System.Drawing.Size(129, 23);
             this.button_AdminManage.TabIndex = 2;
@@ -103,7 +119,7 @@
             // 
             // button_CourseManage
             // 
-            this.button_CourseManage.Location = new System.Drawing.Point(44, 131);
+            this.button_CourseManage.Location = new System.Drawing.Point(44, 301);
             this.button_CourseManage.Name = "button_CourseManage";
             this.button_CourseManage.Size = new System.Drawing.Size(129, 23);
             this.button_CourseManage.TabIndex = 1;
@@ -131,7 +147,7 @@
             this.label_UserName.AutoSize = true;
             this.label_UserName.Location = new System.Drawing.Point(85, 46);
             this.label_UserName.Name = "label_UserName";
-            this.label_UserName.Size = new System.Drawing.Size(0, 13);
+            this.label_UserName.Size = new System.Drawing.Size(0, 16);
             this.label_UserName.TabIndex = 1;
             // 
             // button1
@@ -151,7 +167,7 @@
             this.label_Gmail.AutoSize = true;
             this.label_Gmail.Location = new System.Drawing.Point(85, 18);
             this.label_Gmail.Name = "label_Gmail";
-            this.label_Gmail.Size = new System.Drawing.Size(0, 13);
+            this.label_Gmail.Size = new System.Drawing.Size(0, 16);
             this.label_Gmail.TabIndex = 0;
             // 
             // label2
@@ -159,7 +175,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(45, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Gmail ";
             // 
@@ -168,7 +184,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(73, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "UserName";
             // 
@@ -190,6 +206,25 @@
             this.panel_Main.Size = new System.Drawing.Size(817, 465);
             this.panel_Main.TabIndex = 2;
             this.panel_Main.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // button_ExamTimeTable
+            // 
+            this.button_ExamTimeTable.Location = new System.Drawing.Point(44, 181);
+            this.button_ExamTimeTable.Name = "button_ExamTimeTable";
+            this.button_ExamTimeTable.Size = new System.Drawing.Size(129, 23);
+            this.button_ExamTimeTable.TabIndex = 7;
+            this.button_ExamTimeTable.Text = "Exam TimeTable";
+            this.button_ExamTimeTable.UseVisualStyleBackColor = true;
+            this.button_ExamTimeTable.Click += new System.EventHandler(this.button_ExamTimeTable_Click);
+            // 
+            // button_Subject
+            // 
+            this.button_Subject.Location = new System.Drawing.Point(44, 259);
+            this.button_Subject.Name = "button_Subject";
+            this.button_Subject.Size = new System.Drawing.Size(129, 23);
+            this.button_Subject.TabIndex = 8;
+            this.button_Subject.Text = "Subject Manage";
+            this.button_Subject.UseVisualStyleBackColor = true;
             // 
             // DashBoard
             // 
@@ -225,5 +260,8 @@
         private System.Windows.Forms.Button button_AdminManage;
         private System.Windows.Forms.Button button_CourseManage;
         private System.Windows.Forms.Button button_StudentManage;
+        private System.Windows.Forms.Button button_TimeTable;
+        private System.Windows.Forms.Button button_ExamTimeTable;
+        private System.Windows.Forms.Button button_Subject;
     }
 }

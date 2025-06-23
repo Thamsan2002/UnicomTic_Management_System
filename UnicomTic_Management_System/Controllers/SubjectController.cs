@@ -108,6 +108,45 @@ namespace UnicomTic_Management_System.Controllers
                 return list;
             }
         }
+        public List<Subjects> LoadSubjectsName(int CourseID) 
+        {
+            List<Subjects> list = new List<Subjects>();
+            using(SQLiteConnection connect = DatabaseManager.GetConnection()) 
+            {
+                SQLiteCommand cmd = connect.CreateCommand();
+                if (CourseID == 0) 
+                {
+                    cmd.CommandText = "SELECT ID, Name FROM Subjects";
+                    var Readings =cmd.ExecuteReader();
+                    while (Readings.Read()) 
+                    {
+                        list.Add(new Subjects 
+                        {
+                            Id = Convert.ToInt32(Readings["ID"]),
+                            Name = Readings["Name"].ToString()
+                        });
+                    }
+                }
+                else 
+                {
+                    cmd.CommandText = @"SELECT Subjects.ID, Subjects.Name FROM Subjects  
+                                        LEFT JOIN CourseSubject ON CourseSubject.CoursesID = @cid
+                                        WHERE Subjects.ID=CourseSubject.SubjectsID";
+                    cmd.Parameters.AddWithValue("@cid",CourseID);
+                    var Readings = cmd.ExecuteReader();
+                    while (Readings.Read())
+                    {
+                        list.Add(new Subjects
+                        {
+                            Id = Convert.ToInt32(Readings["ID"]),
+                            Name = Readings["Name"].ToString()
+                        });
+                    }
+
+                }
+            }
+            return list;
+        }
         public bool DeleteSubject(int SubjectID)
         {
             if (SubjectID > 0) 

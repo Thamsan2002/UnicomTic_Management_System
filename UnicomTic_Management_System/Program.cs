@@ -30,6 +30,7 @@ namespace UnicomTic_Management_System
                 Application.Run(new LoginForm());
             }
             else { Application.Run(new LoginForm()); }
+            //Application.Run(new AddTimeTableForm());
         }
     }
 }

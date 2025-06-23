@@ -17,12 +17,14 @@ namespace UnicomTic_Management_System.Views
         {
             InitializeComponent();
         }
-        public DashBoard(string Gmail,string Username,string role) 
+        private int UserID;
+        public DashBoard(string Gmail,string Username,string role,int UserID) 
         {
             InitializeComponent();
             label_Gmail.Text =Gmail;
             label_UserName.Text = Username;
             groupBox_User.Text = role;
+            this.UserID =UserID;
 
 
         }
@@ -78,6 +80,16 @@ namespace UnicomTic_Management_System.Views
         private void button_StudentManage_Click(object sender, EventArgs e)
         {
             LoadForm(new ViewStudentForm(this));
+        }
+
+        private void button_TimeTable_Click(object sender, EventArgs e)
+        {
+            LoadForm(new ViewClassTimeTableForm(this,groupBox_User.Text,UserID));
+        }
+
+        private void button_ExamTimeTable_Click(object sender, EventArgs e)
+        {
+            LoadForm(new ViewExamTimeTableForm(this, groupBox_User.Text, UserID));
         }
     }
 }

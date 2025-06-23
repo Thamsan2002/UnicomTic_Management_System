@@ -64,7 +64,7 @@ namespace UnicomTic_Management_System.Views
             if (LoginedUSer.Role==null) { MessageBox.Show($"Login Failed!\nInvalid UserName Or Password"); }
             else 
             {
-                new DashBoard(LoginedUSer.Gmail,LoginedUSer.UserName,LoginedUSer.Role).ShowDialog();
+                new DashBoard(LoginedUSer.Gmail,LoginedUSer.UserName,LoginedUSer.Role, LoginedUSer.Id).ShowDialog();
                textBox_Password.Text=null;
                textBox_UserName.Text=null;
             }

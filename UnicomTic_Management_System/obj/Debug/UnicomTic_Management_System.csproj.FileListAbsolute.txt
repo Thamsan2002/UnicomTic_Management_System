@@ -305,3 +305,9 @@ E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug
 E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.LecturerUpdateForm.resources
 E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.ViewStudentForm.resources
 E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.StudentUpdateForm.resources
+E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.AddTimeTableForm.resources
+E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.ViewClassTimeTableForm.resources
+E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.AddExamTimeTableForm.resources
+E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.ViewExamTimeTableForm.resources
+E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.UpdateClassTimeTableForm.resources
+E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.UpdateExamTimeTableForm.resources

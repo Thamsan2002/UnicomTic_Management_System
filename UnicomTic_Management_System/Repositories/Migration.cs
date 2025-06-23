@@ -129,9 +129,17 @@ namespace UnicomTic_Management_System.Repositories
                                         CREATE TABLE IF NOT EXISTS Exams(
                                         ID INTEGER PRIMARY KEY AUTOINCREMENT,
                                         Date TEXT NOT NULL,
-                                        Name TEXT NOT NULL,
+                                        StartTime TEXT NOT NULL,
+                                        EndTime TEXT NOT NULL,
+                                        Heading TEXT NOT NULL,
+                                        DepartmentsID INTEGER,
+                                        CoursesID INTEGER,
                                         SubjectsID INTEGER,
-                                        FOREIGN KEY (SubjectsID) REFERENCES Subjects(ID));
+                                        RoomsID INTEGER,
+                                        FOREIGN KEY (DepartmentsID) REFERENCES Departments(ID),
+                                        FOREIGN KEY (CoursesID) REFERENCES Courses(ID),
+                                        FOREIGN KEY (SubjectsID) REFERENCES Subjects(ID),                                        FOREIGN KEY (SubjectsID) REFERENCES Subjects(ID),
+                                        FOREIGN KEY (RoomsID) REFERENCES Rooms(ID));
 
                                         CREATE TABLE IF NOT EXISTS ExamMarks(
                                         ExamsID INTEGER,
@@ -154,11 +162,17 @@ namespace UnicomTic_Management_System.Repositories
                                         FOREIGN KEY (SubjectsID) REFERENCES Subjects(ID));
 
                                         CREATE TABLE IF NOT EXISTS TimeTables(
+                                        ID INTEGER PRIMARY KEY AUTOINCREMENT,
                                         Date TEXT NOT NULL,
-                                        Time TEXT NOT NULL,
+                                        StartTime TEXT NOT NULL,
+                                        EndTime TEXT NOT NULL,
+                                        DepartmentsID INTEGER,
+                                        CoursesID INTEGER,
                                         SubjectsID INTEGER,
                                         RoomsID INTEGER,
-                                        FOREIGN KEY (SubjectsID) REFERENCES Subjects(ID),
+                                        FOREIGN KEY (DepartmentsID) REFERENCES Departments(ID),
+                                        FOREIGN KEY (CoursesID) REFERENCES Courses(ID),
+                                        FOREIGN KEY (SubjectsID) REFERENCES Subjects(ID),                                        FOREIGN KEY (SubjectsID) REFERENCES Subjects(ID),
                                         FOREIGN KEY (RoomsID) REFERENCES Rooms(ID));
                                         ";
                 command.ExecuteNonQuery();
