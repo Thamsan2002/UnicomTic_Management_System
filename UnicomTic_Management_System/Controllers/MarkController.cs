@@ -35,7 +35,8 @@ namespace UnicomTic_Management_System.Controllers
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
                 SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = @"SELECT  ExamMarks.ID, ExamMarks.ExamsID, ExamMarks.StudentsID, ExamMarks.Score, Exams.Heading AS ExamName, Students.LastName AS StudentName
+                cmd.CommandText = @"SELECT  ExamMarks.ID, ExamMarks.ExamsID, ExamMarks.StudentsID, ExamMarks.Score,
+                                    Exams.Heading AS ExamName, Students.LastName AS StudentName
                                     FROM ExamMarks LEFT JOIN Exams ON Exams.ID = ExamMarks.ExamsID
                                     LEFT JOIN Students ON Students.ID = ExamMarks.StudentsID";
                 var reading = cmd.ExecuteReader();
@@ -53,7 +54,8 @@ namespace UnicomTic_Management_System.Controllers
                             Score = reading["Score"].ToString()
                         });
                     }
-                    else if(role != "Student" && (reading["ExamName"].ToString().Contains(Search) || reading["StudentName"].ToString().Contains(Search))) 
+                    else if(role != "Student" && (reading["ExamName"].ToString().Contains(Search) 
+                        || reading["StudentName"].ToString().Contains(Search))) 
                     {
                         list.Add(new Marks
                         {
@@ -77,7 +79,8 @@ namespace UnicomTic_Management_System.Controllers
                             Score = reading["Score"].ToString()
                         });
                     }
-                    else if (reading["StudentsID"].ToString() == StudentID.ToString() &&((reading["ExamName"].ToString().Contains(Search) || reading["StudentName"].ToString().Contains(Search))))
+                    else if (reading["StudentsID"].ToString() == StudentID.ToString() &&
+                        ((reading["ExamName"].ToString().Contains(Search) || reading["StudentName"].ToString().Contains(Search))))
                     {
                         list.Add(new Marks
                         {
@@ -109,26 +112,38 @@ namespace UnicomTic_Management_System.Controllers
                 }
             }
         }
-        public void UpdateMark(Marks mark)
+        public bool UpdateMark(Marks mark)
         {
             if (!string.IsNullOrWhiteSpace(mark.Score) && mark.ID>0)
             {
-                using (SQLiteConnection connect = DatabaseManager.GetConnection())
+                if (mark.Score.All(Char.IsDigit))
                 {
-                    using (SQLiteCommand cmd = connect.CreateCommand())
+                    if( 0 <= Convert.ToInt32(mark.Score) && Convert.ToInt32(mark.Score) <= 100) 
                     {
-                        cmd.CommandText = @"UPDATE ExamMarks SET Score =@score  WHERE ID=@id";
-                        cmd.Parameters.AddWithValue("@id", mark.ID);
-                        cmd.Parameters.AddWithValue("@score", mark.Score);
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Successfully ExamMarks Updated");
-                    }
+                        using (SQLiteConnection connect = DatabaseManager.GetConnection())
+                        {
+                            using (SQLiteCommand cmd = connect.CreateCommand())
+                            {
+                                cmd.CommandText = @"UPDATE ExamMarks SET Score =@score  WHERE ID=@id";
+                                cmd.Parameters.AddWithValue("@id", mark.ID);
+                                cmd.Parameters.AddWithValue("@score", mark.Score);
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Successfully ExamMarks Updated");
+                                return true;
+                            }
 
+                        }
+                    }
+                    else { MessageBox.Show("Enter a Valid Score!"); }
+                    return false;
                 }
+                else { MessageBox.Show("Score Number Only!"); }
+                return false;
             }
             else
             {
                 MessageBox.Show("Enter a Marks!");
+                return false;
             }
 
 

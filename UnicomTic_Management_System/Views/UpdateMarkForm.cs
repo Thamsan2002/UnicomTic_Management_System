@@ -50,10 +50,12 @@ namespace UnicomTic_Management_System.Views
         private void button_Add_Click(object sender, EventArgs e)
         {
             mark.Score = textBox_Score.Text;
-            markController.UpdateMark(mark);
-            Close();
-            parentform.LoadForm(new ViewExamMarkForm(parentform, role, UserId));
-
+            bool result =markController.UpdateMark(mark);
+            if (result == true) 
+            {
+                Close();
+                parentform.LoadForm(new ViewExamMarkForm(parentform, role, UserId));
+            }
         }
     }
 }

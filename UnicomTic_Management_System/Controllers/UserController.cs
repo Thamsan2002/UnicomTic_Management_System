@@ -19,7 +19,8 @@ namespace UnicomTic_Management_System.Controllers
 
         public string SaveUser(Users user) 
         {
-            if (!string.IsNullOrWhiteSpace(user.UserName) && !string.IsNullOrWhiteSpace(user.Gmail) && !string.IsNullOrWhiteSpace(user.CreatedDate) && !string.IsNullOrWhiteSpace(user.UserNameCreateType)) 
+            if (!string.IsNullOrWhiteSpace(user.UserName) && !string.IsNullOrWhiteSpace(user.Gmail) && 
+                !string.IsNullOrWhiteSpace(user.CreatedDate) && !string.IsNullOrWhiteSpace(user.UserNameCreateType)) 
             {
                  string GmailResult = GmailValidation(user.Gmail);
                 if (GmailResult == "Invalid") { return "Failed"; }
@@ -63,7 +64,7 @@ namespace UnicomTic_Management_System.Controllers
 
                                 return ($"User Created Successfully\nYour UserName is :{user.UserName}\nYour Password is :{user.Password}");
                             }
-                            catch /*(FormatException)*/ (SQLiteException ex) when (ex.ResultCode == SQLiteErrorCode.Constraint)
+                            catch(SQLiteException ex) when (ex.ResultCode == SQLiteErrorCode.Constraint)
                             {
                                 MessageBox.Show("This UserName Already Taken!");
                                 using (UserCreation userCreation = new UserCreation(user.Password))

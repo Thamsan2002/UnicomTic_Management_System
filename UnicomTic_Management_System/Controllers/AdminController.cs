@@ -177,7 +177,8 @@ namespace UnicomTic_Management_System.Controllers
                     {
                         using(SQLiteCommand cmd = connect.CreateCommand()) 
                         {
-                            cmd.CommandText = @"UPDATE Admins SET FirstName=@fname, LastName=@lname, NicNumber=@nic, Phone=@phone, Gender=@gender, Address=@address WHERE ID=@id";
+                            cmd.CommandText = @"UPDATE Admins SET FirstName=@fname, LastName=@lname, NicNumber=@nic, Phone=@phone, Gender=@gender,
+                            Address=@address WHERE ID=@id";
                             cmd.Parameters.AddWithValue("@id", admin.Id);
                             cmd.Parameters.AddWithValue("@fname", admin.FirstName);
                             cmd.Parameters.AddWithValue("@lname", admin.LastName);
@@ -189,15 +190,6 @@ namespace UnicomTic_Management_System.Controllers
                             MessageBox.Show("Updated Successfully");
                         }
                         
-                        //if (admin.AccessLevel == "SuperAdmin") 
-                        //{
-                        //    cmd.CommandText = "UPDATE Admins SET AccessLevel=@aclevel WHERE UsersID=@uid";
-                        //    cmd.Parameters.AddWithValue("@uid",ID);
-                        //    cmd.Parameters.AddWithValue("@aclevel","Admin");
-                        //    cmd.ExecuteNonQuery();
-                        //    Application.Exit();
-                        //    Application.Run(new LoginForm());
-                        //}
                     }
                 }
             }

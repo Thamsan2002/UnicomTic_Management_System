@@ -39,7 +39,8 @@ namespace UnicomTic_Management_System
         }
         protected string GmailValidation(string email)
         {
-            if (!email.EndsWith("@gmail.com", StringComparison.OrdinalIgnoreCase) || email.Length <= "@gmail.com".Length)
+            if (!email.EndsWith("@gmail.com", StringComparison.OrdinalIgnoreCase) 
+                || email.Length <= "@gmail.com".Length)
             {
                 MessageBox.Show("Invalid Gmail Format!");
                 return "Invalid";
