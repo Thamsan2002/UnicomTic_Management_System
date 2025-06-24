@@ -314,3 +314,4 @@ E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug
 E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.ChangeUserNameForm.resources
 E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.ViewExamMarkForm.resources
 E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.UpdateMarkForm.resources
+E:\c#\New 6.21\UnicomTic_Management_System\UnicomTic_Management_System\obj\Debug\UnicomTic_Management_System.Views.DashBordHomeForm.resources

@@ -18,6 +18,12 @@ namespace UnicomTic_Management_System.Views
         {
             InitializeComponent();
         }
+        private DashBoard dashbord;
+        public DepartmentForm(DashBoard dashBoard)
+        {
+            InitializeComponent();
+            dashbord = dashBoard;
+        }
         Departments department = new Departments();
         DepartmentController departmentController = new DepartmentController();
         private void DepartmentForm_Load(object sender, EventArgs e)
@@ -44,6 +50,7 @@ namespace UnicomTic_Management_System.Views
         private void button_Back_Click(object sender, EventArgs e)
         {
             Close();
+            dashbord.LoadForm(new CoursesForm(dashbord));
         }
 
         private void button_Add_Click(object sender, EventArgs e)

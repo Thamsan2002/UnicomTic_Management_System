@@ -145,7 +145,7 @@
             // textBox_Subject
             // 
             this.textBox_Subject.Location = new System.Drawing.Point(176, 73);
-            this.textBox_Subject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_Subject.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Subject.Name = "textBox_Subject";
             this.textBox_Subject.Size = new System.Drawing.Size(291, 22);
             this.textBox_Subject.TabIndex = 9;
@@ -156,7 +156,7 @@
             // 
             this.comboBox_Department.FormattingEnabled = true;
             this.comboBox_Department.Location = new System.Drawing.Point(687, 74);
-            this.comboBox_Department.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox_Department.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Department.Name = "comboBox_Department";
             this.comboBox_Department.Size = new System.Drawing.Size(291, 24);
             this.comboBox_Department.TabIndex = 10;
@@ -167,7 +167,7 @@
             // 
             this.comboBox_Course.FormattingEnabled = true;
             this.comboBox_Course.Location = new System.Drawing.Point(176, 143);
-            this.comboBox_Course.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox_Course.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Course.Name = "comboBox_Course";
             this.comboBox_Course.Size = new System.Drawing.Size(291, 24);
             this.comboBox_Course.TabIndex = 11;
@@ -178,7 +178,7 @@
             // 
             this.comboBox_Lecturer.FormattingEnabled = true;
             this.comboBox_Lecturer.Location = new System.Drawing.Point(687, 140);
-            this.comboBox_Lecturer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox_Lecturer.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Lecturer.Name = "comboBox_Lecturer";
             this.comboBox_Lecturer.Size = new System.Drawing.Size(291, 24);
             this.comboBox_Lecturer.TabIndex = 12;
@@ -189,7 +189,7 @@
             // 
             this.dataGridView_Subject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Subject.Location = new System.Drawing.Point(176, 289);
-            this.dataGridView_Subject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView_Subject.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView_Subject.Name = "dataGridView_Subject";
             this.dataGridView_Subject.RowHeadersWidth = 51;
             this.dataGridView_Subject.Size = new System.Drawing.Size(721, 220);
@@ -199,7 +199,7 @@
             // button_Clear
             // 
             this.button_Clear.Location = new System.Drawing.Point(321, 196);
-            this.button_Clear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Clear.Margin = new System.Windows.Forms.Padding(4);
             this.button_Clear.Name = "button_Clear";
             this.button_Clear.Size = new System.Drawing.Size(100, 42);
             this.button_Clear.TabIndex = 14;
@@ -210,7 +210,7 @@
             // button_Delete
             // 
             this.button_Delete.Location = new System.Drawing.Point(487, 196);
-            this.button_Delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Delete.Margin = new System.Windows.Forms.Padding(4);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(100, 42);
             this.button_Delete.TabIndex = 15;
@@ -221,7 +221,7 @@
             // button_Add
             // 
             this.button_Add.Location = new System.Drawing.Point(643, 196);
-            this.button_Add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Add.Margin = new System.Windows.Forms.Padding(4);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(100, 42);
             this.button_Add.TabIndex = 16;
@@ -232,7 +232,7 @@
             // button_Back
             // 
             this.button_Back.Location = new System.Drawing.Point(176, 196);
-            this.button_Back.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Back.Margin = new System.Windows.Forms.Padding(4);
             this.button_Back.Name = "button_Back";
             this.button_Back.Size = new System.Drawing.Size(100, 42);
             this.button_Back.TabIndex = 17;
@@ -253,7 +253,7 @@
             // textbox_Search
             // 
             this.textbox_Search.Location = new System.Drawing.Point(417, 255);
-            this.textbox_Search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textbox_Search.Margin = new System.Windows.Forms.Padding(4);
             this.textbox_Search.Name = "textbox_Search";
             this.textbox_Search.Size = new System.Drawing.Size(479, 22);
             this.textbox_Search.TabIndex = 19;
@@ -284,7 +284,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SubjectForm";
             this.Text = "SubjectForm";
             this.Load += new System.EventHandler(this.SubjectForm_Load);

@@ -41,27 +41,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(159, 20);
+            this.label1.Location = new System.Drawing.Point(212, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 13);
+            this.label1.Size = new System.Drawing.Size(202, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "DEPARTMENT MANAGEMENT";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(70, 79);
+            this.label2.Location = new System.Drawing.Point(93, 97);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.Size = new System.Drawing.Size(77, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Department";
             // 
             // textBox_Department
             // 
             this.textBox_Department.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_Department.Location = new System.Drawing.Point(162, 79);
+            this.textBox_Department.Location = new System.Drawing.Point(216, 97);
+            this.textBox_Department.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_Department.Name = "textBox_Department";
-            this.textBox_Department.Size = new System.Drawing.Size(208, 20);
+            this.textBox_Department.Size = new System.Drawing.Size(276, 22);
             this.textBox_Department.TabIndex = 3;
             this.textBox_Department.Text = "Enter Department Name";
             this.textBox_Department.Click += new System.EventHandler(this.textBox_Department_Click);
@@ -69,9 +72,10 @@
             // 
             // button_Add
             // 
-            this.button_Add.Location = new System.Drawing.Point(295, 146);
+            this.button_Add.Location = new System.Drawing.Point(393, 180);
+            this.button_Add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Add.Name = "button_Add";
-            this.button_Add.Size = new System.Drawing.Size(75, 23);
+            this.button_Add.Size = new System.Drawing.Size(100, 28);
             this.button_Add.TabIndex = 4;
             this.button_Add.Text = "ADD";
             this.button_Add.UseVisualStyleBackColor = true;
@@ -79,9 +83,10 @@
             // 
             // button_Delete
             // 
-            this.button_Delete.Location = new System.Drawing.Point(189, 146);
+            this.button_Delete.Location = new System.Drawing.Point(252, 180);
+            this.button_Delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Delete.Name = "button_Delete";
-            this.button_Delete.Size = new System.Drawing.Size(75, 23);
+            this.button_Delete.Size = new System.Drawing.Size(100, 28);
             this.button_Delete.TabIndex = 5;
             this.button_Delete.Text = "DELETE";
             this.button_Delete.UseVisualStyleBackColor = true;
@@ -89,9 +94,10 @@
             // 
             // button_Back
             // 
-            this.button_Back.Location = new System.Drawing.Point(95, 146);
+            this.button_Back.Location = new System.Drawing.Point(127, 180);
+            this.button_Back.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Back.Name = "button_Back";
-            this.button_Back.Size = new System.Drawing.Size(75, 23);
+            this.button_Back.Size = new System.Drawing.Size(100, 28);
             this.button_Back.TabIndex = 6;
             this.button_Back.Text = "BACK";
             this.button_Back.UseVisualStyleBackColor = true;
@@ -100,17 +106,19 @@
             // dataGridView_Department
             // 
             this.dataGridView_Department.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Department.Location = new System.Drawing.Point(95, 186);
+            this.dataGridView_Department.Location = new System.Drawing.Point(127, 229);
+            this.dataGridView_Department.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView_Department.Name = "dataGridView_Department";
-            this.dataGridView_Department.Size = new System.Drawing.Size(275, 169);
+            this.dataGridView_Department.RowHeadersWidth = 51;
+            this.dataGridView_Department.Size = new System.Drawing.Size(367, 208);
             this.dataGridView_Department.TabIndex = 7;
             this.dataGridView_Department.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_Department_CellMouseClick);
             // 
             // DepartmentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 367);
+            this.ClientSize = new System.Drawing.Size(643, 452);
             this.Controls.Add(this.dataGridView_Department);
             this.Controls.Add(this.button_Back);
             this.Controls.Add(this.button_Delete);
@@ -118,6 +126,8 @@
             this.Controls.Add(this.textBox_Department);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DepartmentForm";
             this.Text = "DepartmentForm";
             this.Load += new System.EventHandler(this.DepartmentForm_Load);

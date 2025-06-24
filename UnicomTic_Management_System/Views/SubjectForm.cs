@@ -18,6 +18,12 @@ namespace UnicomTic_Management_System.Views
         {
             InitializeComponent();
         }
+        private DashBoard dashBoard;
+        public SubjectForm(DashBoard dashBoard)
+        {
+            InitializeComponent();
+            this.dashBoard = dashBoard;
+        }
         Subjects subject = new Subjects();
         CourseLecturer courseLecturer = new CourseLecturer();
         CourseSubject CourseSubject = new CourseSubject();
@@ -153,9 +159,6 @@ namespace UnicomTic_Management_System.Views
                 CourseSubject.CourseID = Convert.ToInt32(comboBox_Course.SelectedValue);
                 subject.LecturerID = Convert.ToInt32(comboBox_Lecturer.SelectedValue);
             }
-            //label_Department.Text = subject.DepartmentID.ToString();
-            //label_Lecturer.Text = subject.LecturerID.ToString();
-            //label_Course.Text = CourseSubject.CourseID.ToString();
             CourseSubject.SubjectID = subjectController.AddSubject(subject, CourseSubject.CourseID);
             if (CourseSubject.SubjectID > 0)
             {
@@ -195,6 +198,7 @@ namespace UnicomTic_Management_System.Views
         private void button_Back_Click(object sender, EventArgs e)
         {
             Close();
+            dashBoard.LoadForm(new DashBordHomeForm());
         }
 
         private void dataGridView_Subject_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

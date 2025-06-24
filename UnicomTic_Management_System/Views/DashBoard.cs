@@ -49,7 +49,19 @@ namespace UnicomTic_Management_System.Views
 
         private void DashBoard_Load(object sender, EventArgs e)
         {
-
+            LoadForm(new DashBordHomeForm());
+            if(groupBox_User.Text=="Admin" || groupBox_User.Text=="Staff" || groupBox_User.Text=="Lecture" || groupBox_User.Text == "Student") 
+            {
+                button_AdminManage.Visible = false;
+            }
+            if(groupBox_User.Text=="Staff" || groupBox_User.Text=="Lecturer" || groupBox_User.Text == "Student") 
+            {
+                button_StaffManage.Visible = false;
+                button_LecturerManage.Visible = false;
+                button_StudentManage.Visible = false;
+                button_CourseManage.Visible = false;
+                button_Subject.Visible=false;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -59,7 +71,7 @@ namespace UnicomTic_Management_System.Views
 
         private void button_CourseManage_Click(object sender, EventArgs e)
         {
-            LoadForm(new CoursesForm());
+            LoadForm(new CoursesForm(this));
         }
 
         private void button_AdminManage_Click(object sender, EventArgs e)
@@ -96,6 +108,11 @@ namespace UnicomTic_Management_System.Views
         {
             LoadForm(new ViewExamMarkForm(this, groupBox_User.Text, UserID));
 
+        }
+
+        private void button_Subject_Click(object sender, EventArgs e)
+        {
+            LoadForm(new SubjectForm(this));
         }
     }
 }

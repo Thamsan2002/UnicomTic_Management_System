@@ -18,6 +18,12 @@ namespace UnicomTic_Management_System.Views
         {
             InitializeComponent();
         }
+        private DashBoard dashBoard;
+        public CoursesForm(DashBoard dashBoard)
+        {
+            InitializeComponent();
+            this.dashBoard = dashBoard;
+        }
         Courses course = new Courses();
         CourseController courseController = new CourseController();
         private void LoadDepartment() 
@@ -52,11 +58,7 @@ namespace UnicomTic_Management_System.Views
             LoadCourses();
             label_Department.Text = null;
         }
-        //private void comboBox_Department_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-            
-        //}
-
+  
         private void textBox_Course_Click(object sender, EventArgs e)
         {
             if (textBox_Course.ForeColor != Color.Black) { textBox_Course.Text = null; }
@@ -104,6 +106,7 @@ namespace UnicomTic_Management_System.Views
         private void button_Back_Click(object sender, EventArgs e)
         {
             Close();
+            dashBoard.LoadForm(new DashBordHomeForm());
         }
 
 
@@ -125,7 +128,7 @@ namespace UnicomTic_Management_System.Views
 
         private void button_Department_Click(object sender, EventArgs e)
         {
-            new DepartmentForm().ShowDialog();
+            dashBoard.LoadForm(new DepartmentForm(dashBoard));
             LoadDepartment();
         }
 

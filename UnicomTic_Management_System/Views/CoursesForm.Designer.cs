@@ -47,27 +47,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(338, 25);
+            this.label1.Location = new System.Drawing.Point(451, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 13);
+            this.label1.Size = new System.Drawing.Size(164, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "COURSE MANAGEMENT";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(232, 88);
+            this.label2.Location = new System.Drawing.Point(309, 108);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(50, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Course";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(232, 140);
+            this.label3.Location = new System.Drawing.Point(309, 172);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.Size = new System.Drawing.Size(77, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Department";
             // 
@@ -75,26 +78,29 @@
             // 
             this.label_Course.AutoSize = true;
             this.label_Course.ForeColor = System.Drawing.Color.Red;
-            this.label_Course.Location = new System.Drawing.Point(326, 69);
+            this.label_Course.Location = new System.Drawing.Point(435, 85);
+            this.label_Course.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Course.Name = "label_Course";
-            this.label_Course.Size = new System.Drawing.Size(0, 13);
+            this.label_Course.Size = new System.Drawing.Size(0, 16);
             this.label_Course.TabIndex = 3;
             // 
             // label_Department
             // 
             this.label_Department.AutoSize = true;
             this.label_Department.ForeColor = System.Drawing.Color.Red;
-            this.label_Department.Location = new System.Drawing.Point(326, 121);
+            this.label_Department.Location = new System.Drawing.Point(435, 149);
+            this.label_Department.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Department.Name = "label_Department";
-            this.label_Department.Size = new System.Drawing.Size(0, 13);
+            this.label_Department.Size = new System.Drawing.Size(0, 16);
             this.label_Department.TabIndex = 4;
             // 
             // textBox_Course
             // 
             this.textBox_Course.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_Course.Location = new System.Drawing.Point(318, 85);
+            this.textBox_Course.Location = new System.Drawing.Point(424, 105);
+            this.textBox_Course.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_Course.Name = "textBox_Course";
-            this.textBox_Course.Size = new System.Drawing.Size(270, 20);
+            this.textBox_Course.Size = new System.Drawing.Size(359, 22);
             this.textBox_Course.TabIndex = 5;
             this.textBox_Course.Text = "Enter Course";
             this.textBox_Course.Click += new System.EventHandler(this.textBox_Course_Click);
@@ -104,9 +110,10 @@
             // 
             this.comboBox_Department.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.comboBox_Department.FormattingEnabled = true;
-            this.comboBox_Department.Location = new System.Drawing.Point(319, 137);
+            this.comboBox_Department.Location = new System.Drawing.Point(425, 169);
+            this.comboBox_Department.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_Department.Name = "comboBox_Department";
-            this.comboBox_Department.Size = new System.Drawing.Size(270, 21);
+            this.comboBox_Department.Size = new System.Drawing.Size(359, 24);
             this.comboBox_Department.TabIndex = 6;
             this.comboBox_Department.Text = "Choose Department";
             this.comboBox_Department.DropDown += new System.EventHandler(this.comboBox_Department_DropDown);
@@ -116,9 +123,10 @@
             // 
             // button_Add
             // 
-            this.button_Add.Location = new System.Drawing.Point(531, 187);
+            this.button_Add.Location = new System.Drawing.Point(708, 230);
+            this.button_Add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Add.Name = "button_Add";
-            this.button_Add.Size = new System.Drawing.Size(75, 32);
+            this.button_Add.Size = new System.Drawing.Size(100, 39);
             this.button_Add.TabIndex = 7;
             this.button_Add.Text = "ADD";
             this.button_Add.UseVisualStyleBackColor = true;
@@ -126,9 +134,10 @@
             // 
             // button_Delete
             // 
-            this.button_Delete.Location = new System.Drawing.Point(429, 187);
+            this.button_Delete.Location = new System.Drawing.Point(572, 230);
+            this.button_Delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Delete.Name = "button_Delete";
-            this.button_Delete.Size = new System.Drawing.Size(75, 32);
+            this.button_Delete.Size = new System.Drawing.Size(100, 39);
             this.button_Delete.TabIndex = 8;
             this.button_Delete.Text = "DELETE";
             this.button_Delete.UseVisualStyleBackColor = true;
@@ -136,9 +145,10 @@
             // 
             // button_Back
             // 
-            this.button_Back.Location = new System.Drawing.Point(219, 191);
+            this.button_Back.Location = new System.Drawing.Point(292, 235);
+            this.button_Back.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Back.Name = "button_Back";
-            this.button_Back.Size = new System.Drawing.Size(75, 28);
+            this.button_Back.Size = new System.Drawing.Size(100, 34);
             this.button_Back.TabIndex = 9;
             this.button_Back.Text = "BACK";
             this.button_Back.UseVisualStyleBackColor = true;
@@ -147,17 +157,20 @@
             // CoursesView
             // 
             this.CoursesView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CoursesView.Location = new System.Drawing.Point(247, 250);
+            this.CoursesView.Location = new System.Drawing.Point(329, 308);
+            this.CoursesView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CoursesView.Name = "CoursesView";
-            this.CoursesView.Size = new System.Drawing.Size(341, 174);
+            this.CoursesView.RowHeadersWidth = 51;
+            this.CoursesView.Size = new System.Drawing.Size(455, 214);
             this.CoursesView.TabIndex = 10;
             this.CoursesView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.CoursesView_CellMouseClick);
             // 
             // button_Clear
             // 
-            this.button_Clear.Location = new System.Drawing.Point(319, 191);
+            this.button_Clear.Location = new System.Drawing.Point(425, 235);
+            this.button_Clear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(75, 28);
+            this.button_Clear.Size = new System.Drawing.Size(100, 34);
             this.button_Clear.TabIndex = 11;
             this.button_Clear.Text = "CLEAR";
             this.button_Clear.UseVisualStyleBackColor = true;
@@ -165,9 +178,10 @@
             // 
             // button_Department
             // 
-            this.button_Department.Location = new System.Drawing.Point(637, 20);
+            this.button_Department.Location = new System.Drawing.Point(849, 25);
+            this.button_Department.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Department.Name = "button_Department";
-            this.button_Department.Size = new System.Drawing.Size(141, 23);
+            this.button_Department.Size = new System.Drawing.Size(188, 28);
             this.button_Department.TabIndex = 12;
             this.button_Department.Text = "Department Manageent";
             this.button_Department.UseVisualStyleBackColor = true;
@@ -175,9 +189,9 @@
             // 
             // CoursesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.button_Department);
             this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.CoursesView);
@@ -191,6 +205,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CoursesForm";
             this.Text = "Courses";
             this.Load += new System.EventHandler(this.CoursesForm_Load);
