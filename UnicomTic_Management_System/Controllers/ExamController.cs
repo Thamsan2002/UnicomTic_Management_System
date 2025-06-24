@@ -30,7 +30,7 @@ namespace UnicomTic_Management_System.Controllers
             }
             return Deta;
         }
-        public bool AddExam(Exams exam)
+        public int AddExam(Exams exam)
         {
             if (!string.IsNullOrWhiteSpace(exam.Date) && !string.IsNullOrWhiteSpace(exam.StartTime) && !string.IsNullOrWhiteSpace(exam.EndTime) &&
                 exam.DepartmentID != 0 && exam.CourseID != 0 && exam.SubjectID != 0 && exam.HallID != 0)
@@ -39,7 +39,8 @@ namespace UnicomTic_Management_System.Controllers
                 {
                     SQLiteCommand cmd = connect.CreateCommand();
                     cmd.CommandText = @"INSERT INTO Exams(Date,StartTime,EndTime,Heading,DepartmentsID,CoursesID,SubjectsID,RoomsID) 
-                                        VALUES(@date,@stime,@etime,@heding,@did,@cid,@sid,@rid)";
+                                        VALUES(@date,@stime,@etime,@heding,@did,@cid,@sid,@rid);
+                                        SELECT last_insert_rowid();";
                     cmd.Parameters.AddWithValue("@date", exam.Date);
                     cmd.Parameters.AddWithValue("@stime", exam.StartTime);
                     cmd.Parameters.AddWithValue("@etime", exam.EndTime);
@@ -48,15 +49,15 @@ namespace UnicomTic_Management_System.Controllers
                     cmd.Parameters.AddWithValue("@cid", exam.CourseID);
                     cmd.Parameters.AddWithValue("@sid", exam.SubjectID);
                     cmd.Parameters.AddWithValue("@rid", exam.HallID);
-                    cmd.ExecuteNonQuery();
+                    int Id =Convert.ToInt32(cmd.ExecuteScalar());
                     MessageBox.Show("Successfully Exam Added");
-                    return true;
+                    return Id;
                 }
             }
             else
             {
                 MessageBox.Show("Fill All Details!");
-                return false;
+                return 0;
             }
 
 

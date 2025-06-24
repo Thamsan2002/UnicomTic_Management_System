@@ -142,9 +142,10 @@ namespace UnicomTic_Management_System.Repositories
                                         FOREIGN KEY (RoomsID) REFERENCES Rooms(ID));
 
                                         CREATE TABLE IF NOT EXISTS ExamMarks(
+                                        ID INTEGER PRIMARY KEY AUTOINCREMENT,
                                         ExamsID INTEGER,
                                         StudentsID INTEGER,
-                                        Score TEXT NOT NULL,
+                                        Score TEXT,
                                         FOREIGN KEY (ExamsID) REFERENCES Exams(ID),
                                         FOREIGN KEY (StudentsID) REFERENCES Students(ID));
 

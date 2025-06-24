@@ -232,5 +232,15 @@ namespace UnicomTic_Management_System.Controllers
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
+        public static int GetStudentID(int UserID)
+        {
+            using (SQLiteConnection connect = DatabaseManager.GetConnection())
+            {
+                SQLiteCommand cmd = connect.CreateCommand();
+                cmd.CommandText = "SELECT ID FROM Students WHERE UsersID=@uid ";
+                cmd.Parameters.AddWithValue("@uid", UserID);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
     }
 }

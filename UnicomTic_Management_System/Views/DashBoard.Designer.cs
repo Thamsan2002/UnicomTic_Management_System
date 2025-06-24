@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button_Subject = new System.Windows.Forms.Button();
+            this.button_ExamTimeTable = new System.Windows.Forms.Button();
             this.button_TimeTable = new System.Windows.Forms.Button();
             this.button_StudentManage = new System.Windows.Forms.Button();
             this.button_LecturerManage = new System.Windows.Forms.Button();
@@ -43,8 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel_Main = new System.Windows.Forms.Panel();
-            this.button_ExamTimeTable = new System.Windows.Forms.Button();
-            this.button_Subject = new System.Windows.Forms.Button();
+            this.button_Marks = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox_User.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +53,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.button_Marks);
             this.panel1.Controls.Add(this.button_Subject);
             this.panel1.Controls.Add(this.button_ExamTimeTable);
             this.panel1.Controls.Add(this.button_TimeTable);
@@ -66,6 +68,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(217, 511);
             this.panel1.TabIndex = 0;
+            // 
+            // button_Subject
+            // 
+            this.button_Subject.Location = new System.Drawing.Point(44, 259);
+            this.button_Subject.Name = "button_Subject";
+            this.button_Subject.Size = new System.Drawing.Size(129, 23);
+            this.button_Subject.TabIndex = 8;
+            this.button_Subject.Text = "Subject Manage";
+            this.button_Subject.UseVisualStyleBackColor = true;
+            // 
+            // button_ExamTimeTable
+            // 
+            this.button_ExamTimeTable.Location = new System.Drawing.Point(44, 181);
+            this.button_ExamTimeTable.Name = "button_ExamTimeTable";
+            this.button_ExamTimeTable.Size = new System.Drawing.Size(129, 23);
+            this.button_ExamTimeTable.TabIndex = 7;
+            this.button_ExamTimeTable.Text = "Exam TimeTable";
+            this.button_ExamTimeTable.UseVisualStyleBackColor = true;
+            this.button_ExamTimeTable.Click += new System.EventHandler(this.button_ExamTimeTable_Click);
             // 
             // button_TimeTable
             // 
@@ -147,7 +168,7 @@
             this.label_UserName.AutoSize = true;
             this.label_UserName.Location = new System.Drawing.Point(85, 46);
             this.label_UserName.Name = "label_UserName";
-            this.label_UserName.Size = new System.Drawing.Size(0, 16);
+            this.label_UserName.Size = new System.Drawing.Size(0, 13);
             this.label_UserName.TabIndex = 1;
             // 
             // button1
@@ -167,7 +188,7 @@
             this.label_Gmail.AutoSize = true;
             this.label_Gmail.Location = new System.Drawing.Point(85, 18);
             this.label_Gmail.Name = "label_Gmail";
-            this.label_Gmail.Size = new System.Drawing.Size(0, 16);
+            this.label_Gmail.Size = new System.Drawing.Size(0, 13);
             this.label_Gmail.TabIndex = 0;
             // 
             // label2
@@ -175,7 +196,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 16);
+            this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Gmail ";
             // 
@@ -184,7 +205,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 16);
+            this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "UserName";
             // 
@@ -207,24 +228,15 @@
             this.panel_Main.TabIndex = 2;
             this.panel_Main.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // button_ExamTimeTable
+            // button_Marks
             // 
-            this.button_ExamTimeTable.Location = new System.Drawing.Point(44, 181);
-            this.button_ExamTimeTable.Name = "button_ExamTimeTable";
-            this.button_ExamTimeTable.Size = new System.Drawing.Size(129, 23);
-            this.button_ExamTimeTable.TabIndex = 7;
-            this.button_ExamTimeTable.Text = "Exam TimeTable";
-            this.button_ExamTimeTable.UseVisualStyleBackColor = true;
-            this.button_ExamTimeTable.Click += new System.EventHandler(this.button_ExamTimeTable_Click);
-            // 
-            // button_Subject
-            // 
-            this.button_Subject.Location = new System.Drawing.Point(44, 259);
-            this.button_Subject.Name = "button_Subject";
-            this.button_Subject.Size = new System.Drawing.Size(129, 23);
-            this.button_Subject.TabIndex = 8;
-            this.button_Subject.Text = "Subject Manage";
-            this.button_Subject.UseVisualStyleBackColor = true;
+            this.button_Marks.Location = new System.Drawing.Point(44, 141);
+            this.button_Marks.Name = "button_Marks";
+            this.button_Marks.Size = new System.Drawing.Size(129, 23);
+            this.button_Marks.TabIndex = 9;
+            this.button_Marks.Text = "Exam Marks";
+            this.button_Marks.UseVisualStyleBackColor = true;
+            this.button_Marks.Click += new System.EventHandler(this.button_Marks_Click);
             // 
             // DashBoard
             // 
@@ -263,5 +275,6 @@
         private System.Windows.Forms.Button button_TimeTable;
         private System.Windows.Forms.Button button_ExamTimeTable;
         private System.Windows.Forms.Button button_Subject;
+        private System.Windows.Forms.Button button_Marks;
     }
 }

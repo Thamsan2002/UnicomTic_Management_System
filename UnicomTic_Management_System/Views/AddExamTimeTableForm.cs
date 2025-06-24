@@ -128,9 +128,10 @@ namespace UnicomTic_Management_System.Views
         private void button_Add_Click(object sender, EventArgs e)
         {
             GetDataAndCheckEmptyFields();
-            bool result = examController.AddExam(exam);
-            if (result == true)
+            exam.ID = examController.AddExam(exam);
+            if (exam.ID > 0)
             {
+                MarkController.AddStudentExam(exam);
                 ClearForm();
             }
         }

@@ -127,6 +127,12 @@
     <Compile Include="Views\AdminUpdateForm.Designer.cs">
       <DependentUpon>AdminUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChangeUserNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChangeUserNameForm.Designer.cs">
+      <DependentUpon>ChangeUserNameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CoursesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,12 @@
     <Compile Include="Views\UpdateExamTimeTableForm.Designer.cs">
       <DependentUpon>UpdateExamTimeTableForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UpdateMarkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateMarkForm.Designer.cs">
+      <DependentUpon>UpdateMarkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserCreation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +234,12 @@
     </Compile>
     <Compile Include="Views\ViewClassTimeTableForm.Designer.cs">
       <DependentUpon>ViewClassTimeTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewExamMarkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewExamMarkForm.Designer.cs">
+      <DependentUpon>ViewExamMarkForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewExamTimeTableForm.cs">
       <SubType>Form</SubType>
@@ -268,6 +286,9 @@
     <EmbeddedResource Include="Views\AdminUpdateForm.resx">
       <DependentUpon>AdminUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChangeUserNameForm.resx">
+      <DependentUpon>ChangeUserNameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CoursesForm.resx">
       <DependentUpon>CoursesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +328,9 @@
     <EmbeddedResource Include="Views\UpdateExamTimeTableForm.resx">
       <DependentUpon>UpdateExamTimeTableForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UpdateMarkForm.resx">
+      <DependentUpon>UpdateMarkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserCreation.resx">
       <DependentUpon>UserCreation.cs</DependentUpon>
     </EmbeddedResource>
@@ -315,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ViewClassTimeTableForm.resx">
       <DependentUpon>ViewClassTimeTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewExamMarkForm.resx">
+      <DependentUpon>ViewExamMarkForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ViewExamTimeTableForm.resx">
       <DependentUpon>ViewExamTimeTableForm.cs</DependentUpon>

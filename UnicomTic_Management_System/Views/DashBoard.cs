@@ -91,5 +91,11 @@ namespace UnicomTic_Management_System.Views
         {
             LoadForm(new ViewExamTimeTableForm(this, groupBox_User.Text, UserID));
         }
+
+        private void button_Marks_Click(object sender, EventArgs e)
+        {
+            LoadForm(new ViewExamMarkForm(this, groupBox_User.Text, UserID));
+
+        }
     }
 }
