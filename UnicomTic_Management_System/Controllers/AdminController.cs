@@ -24,6 +24,11 @@ namespace UnicomTic_Management_System.Controllers
                 {
                     Deta.Add(prop.Name);
                 }
+                else if (prop.PropertyType == typeof(int) && Convert.ToInt32(prop.GetValue(admin)) == 0)
+                {
+
+                    Deta.Add(prop.Name);
+                }
             }
             if (string.IsNullOrWhiteSpace(GMail)) { Deta.Add("Gmail"); }
             return Deta;
@@ -31,6 +36,7 @@ namespace UnicomTic_Management_System.Controllers
         }
         public string AdminRegister(Admins admin) 
         {
+            string status;
             admin.UserID = GetLastInsertedId();
             if (!string.IsNullOrWhiteSpace(admin.FirstName) && !string.IsNullOrWhiteSpace(admin.LastName) && !string.IsNullOrWhiteSpace(admin.Address) && !string.IsNullOrWhiteSpace(admin.Phone)
                 && !string.IsNullOrWhiteSpace(admin.Gender) && !string.IsNullOrWhiteSpace(admin.NicNo))
@@ -40,12 +46,12 @@ namespace UnicomTic_Management_System.Controllers
                 if (PoneResult == "Invalid")
                 {
                     UserController.DeleteUser(admin.UserID);
-                    return "Failed";
+                    status= "Failed";
                 }
                 else if (NicResult == "Invalid")
                 {
                     UserController.DeleteUser(admin.UserID);
-                    return "Failed";
+                    status = "Failed";
                 }
                 else
                 {
@@ -67,7 +73,7 @@ namespace UnicomTic_Management_System.Controllers
                             cmd.Parameters.AddWithValue("@userid", admin.UserID);
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Admin Registered Successfully");
-                            return "Success";
+                            status= "Success";
                         }
                     }
                     catch (SQLiteException ex) when (ex.ResultCode == SQLiteErrorCode.Constraint)
@@ -75,7 +81,7 @@ namespace UnicomTic_Management_System.Controllers
                         if (ex.Message.Contains("Phone")) { MessageBox.Show("This Mobile Number Already Registered!"); }
                         else if (ex.Message.Contains("NicNumber")) { MessageBox.Show("This NIC Number Already Registered!"); }
                         UserController.DeleteUser(admin.UserID);
-                        return "Failed";
+                        status = "Failed";
                     }
                 }
             }
@@ -83,8 +89,9 @@ namespace UnicomTic_Management_System.Controllers
             {
                 MessageBox.Show("Please Fill All Details");
                 UserController.DeleteUser(admin.UserID);
-                return "Failed";
+                status= "Failed";
             }
+            return status;
             
             
         }

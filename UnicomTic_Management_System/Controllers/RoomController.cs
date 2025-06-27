@@ -29,8 +29,8 @@ namespace UnicomTic_Management_System.Controllers
                         Name = Readings["Name"].ToString(),
                     });
                 }
-                return list;
             }
+            return list;
         }
     }
 }

@@ -19,11 +19,12 @@ namespace UnicomTic_Management_System.Controllers
 
         public string SaveUser(Users user) 
         {
+            string process;
             if (!string.IsNullOrWhiteSpace(user.UserName) && !string.IsNullOrWhiteSpace(user.Gmail) && 
                 !string.IsNullOrWhiteSpace(user.CreatedDate) && !string.IsNullOrWhiteSpace(user.UserNameCreateType)) 
             {
                  string GmailResult = GmailValidation(user.Gmail);
-                if (GmailResult == "Invalid") { return "Failed"; }
+                if (GmailResult == "Invalid") { process = "Failed"; }
                 else
                 {
                     bool status =true;
@@ -41,7 +42,7 @@ namespace UnicomTic_Management_System.Controllers
                                 else
                                 {
                                     MessageBox.Show("User Creation Cancelled!");
-                                    return "Failed";
+                                    process ="Failed";
                                 }
                             }
                         }
@@ -78,7 +79,7 @@ namespace UnicomTic_Management_System.Controllers
                                     else
                                     {
                                         MessageBox.Show("User Creation Cancelled!");
-                                        return "Failed";
+                                        process = "Failed";
                                     }
                                 }
                             }
@@ -88,12 +89,13 @@ namespace UnicomTic_Management_System.Controllers
                     }
                     
                 }
-                return "Failed";
+                process = "Failed";
             }
             else 
             {
                 MessageBox.Show("Please Fill All Details!"); return "Failed"; 
             }
+            return process;
             
         }
         public static void DeleteUser(int UserId) 
@@ -113,12 +115,10 @@ namespace UnicomTic_Management_System.Controllers
             if (string.IsNullOrWhiteSpace(user.UserName)) 
             {
                 MessageBox.Show("Enter a UserName Or Gmail Address!");
-                return LoginedUSer;
             }
             else if (string.IsNullOrWhiteSpace(user.Password)) 
             {
                 MessageBox.Show("Enter a Password!");
-                return LoginedUSer;
             }
             else 
             {
@@ -137,12 +137,11 @@ namespace UnicomTic_Management_System.Controllers
                             LoginedUSer.Gmail = Result["GMail"].ToString();
                             LoginedUSer.Role = Result["Role"].ToString();
                             LoginedUSer.Id = Convert.ToInt32((Result["Id"]));
-                            return LoginedUSer;
                         }
-                        else { return LoginedUSer; }
                     }
                 }
             }
+            return LoginedUSer;
         }
     }
 }

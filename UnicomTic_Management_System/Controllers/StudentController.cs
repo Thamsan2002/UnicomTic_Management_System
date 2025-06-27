@@ -112,6 +112,7 @@ namespace UnicomTic_Management_System.Controllers
         }
         public int StudentRegister(Students student)
         {
+            int count = 0;
             if (!string.IsNullOrWhiteSpace(student.FirstName) && !string.IsNullOrWhiteSpace(student.LastName) && !string.IsNullOrWhiteSpace(student.NicNo)
                 && !string.IsNullOrWhiteSpace(student.Address) && !string.IsNullOrWhiteSpace(student.Phone) && student.DepartmentID != 0
                 && student.CourseID != 0 && !string.IsNullOrWhiteSpace(student.Gender))
@@ -122,12 +123,10 @@ namespace UnicomTic_Management_System.Controllers
                 if (PoneResult == "Invalid")
                 { 
                     UserController.DeleteUser(student.UserID);
-                    return 0;
                 }
                 else if (NicResult == "Invalid")
                 {
                     UserController.DeleteUser(student.UserID);
-                    return 0;
                 }
                 else
                 {
@@ -153,7 +152,7 @@ namespace UnicomTic_Management_System.Controllers
                             cmd.Parameters.AddWithValue("@uid",student.UserID);
 
                             int ID = Convert.ToInt32(cmd.ExecuteScalar());
-                            return ID;
+                            count= ID;
                         }
                     }
                     catch (SQLiteException ex) when (ex.ResultCode == SQLiteErrorCode.Constraint)
@@ -161,7 +160,6 @@ namespace UnicomTic_Management_System.Controllers
                         if (ex.Message.Contains("Phone")) { MessageBox.Show("This Mobile Number Already Registered!"); }
                         else if (ex.Message.Contains("NicNumber")) { MessageBox.Show("This NIC Number Already Registered!"); }
                         UserController.DeleteUser(student.UserID);
-                        return 0;
                     }
                 }
             }
@@ -169,8 +167,8 @@ namespace UnicomTic_Management_System.Controllers
             {
                 MessageBox.Show("Please Fill All  d Details");
                 UserController.DeleteUser(student.UserID);
-                return 0;
             }
+            return count;
         }
         public void DeleteStudent(Students student)
         {

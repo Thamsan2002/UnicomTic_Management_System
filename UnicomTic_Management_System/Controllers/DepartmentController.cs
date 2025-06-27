@@ -12,26 +12,26 @@ namespace UnicomTic_Management_System.Controllers
 {
     internal class DepartmentController
     {
-        public List<Departments> ViewDepartments() 
+        public List<Departments> ViewDepartments()
         {
             List<Departments> list = new List<Departments>();
-            using(SQLiteConnection connect = DatabaseManager.GetConnection()) 
+            using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
                 SQLiteCommand cmd = connect.CreateCommand();
                 cmd.CommandText = "SELECT * FROM Departments";
                 var Readings = cmd.ExecuteReader();
-                while (Readings.Read()) 
+                while (Readings.Read())
                 {
-                    list.Add(new Departments 
+                    list.Add(new Departments
                     {
                         ID = Readings.GetInt32(0),
                         Name = Readings.GetString(1)
                     });
                 }
-                return list;
             }
+            return list;
         }
-        public void AddDepartment(Departments department) 
+        public void AddDepartment(Departments department)
         {
             if (!string.IsNullOrWhiteSpace(department.Name))
             {
@@ -47,13 +47,13 @@ namespace UnicomTic_Management_System.Controllers
                     }
                 }
                 catch { MessageBox.Show("This Department Already Registered!"); }
-                
+
             }
             else { MessageBox.Show("Enter a Department Name"); }
         }
-        public void DeleteDepartment(Departments department) 
+        public void DeleteDepartment(Departments department)
         {
-            if (!string.IsNullOrWhiteSpace(department.Name)) 
+            if (!string.IsNullOrWhiteSpace(department.Name))
             {
                 using (SQLiteConnection connect = DatabaseManager.GetConnection())
                 {
@@ -62,10 +62,10 @@ namespace UnicomTic_Management_System.Controllers
                     cmd.Parameters.AddWithValue("@id", department.ID);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     if (count > 0) { MessageBox.Show($"This Department Have {count} Active Subject!"); }
-                    else 
+                    else
                     {
                         cmd.CommandText = "DELETE FROM Departments WHERE ID=@id";
-                        cmd.Parameters.AddWithValue("@id",department.ID);
+                        cmd.Parameters.AddWithValue("@id", department.ID);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Department Deleted Successfully!");
                     }

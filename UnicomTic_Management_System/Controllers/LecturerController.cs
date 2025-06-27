@@ -142,9 +142,10 @@ namespace UnicomTic_Management_System.Controllers
         }
         public string LecturerRegister(Lecturers lecturer)
         {
+            string status;
             lecturer.UserID = GetLastInsertedId();
             if (!string.IsNullOrWhiteSpace(lecturer.FirstName) && !string.IsNullOrWhiteSpace(lecturer.LastName) && !string.IsNullOrWhiteSpace(lecturer.Address) && !string.IsNullOrWhiteSpace(lecturer.Phone)
-                && !string.IsNullOrWhiteSpace(lecturer.Gender) && !string.IsNullOrWhiteSpace(lecturer.NicNo) && !string.IsNullOrWhiteSpace(lecturer.Salary) && lecturer.CourseID>0 && lecturer.DepartmentID>0)
+                && !string.IsNullOrWhiteSpace(lecturer.Gender) && !string.IsNullOrWhiteSpace(lecturer.NicNo) && !string.IsNullOrWhiteSpace(lecturer.Salary) && lecturer.DepartmentID>0)
             {
                 string PoneResult = PhoneValidation(lecturer.Phone);
                 string NicResult = NicValidation(lecturer.NicNo);
@@ -152,17 +153,17 @@ namespace UnicomTic_Management_System.Controllers
                 if (PoneResult == "Invalid")
                 {
                     UserController.DeleteUser(lecturer.UserID);
-                    return "Failed";
+                    status = "Failed";
                 }
                 else if (NicResult == "Invalid")
                 {
                     UserController.DeleteUser(lecturer.UserID);
-                    return "Failed";
+                    status = "Failed";
                 }
                 else if (SalaryResult == "Invalid") 
                 {
                     UserController.DeleteUser(lecturer.UserID);
-                    return "Failed";
+                    status = "Failed";
                 }
                 else
                 {
@@ -188,7 +189,7 @@ namespace UnicomTic_Management_System.Controllers
                             cmd.Parameters.AddWithValue("@userid", lecturer.UserID);
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Lecturer Registered Successfully");
-                            return "Success";
+                            status = "Success";
                         }
                     }
                     catch (SQLiteException ex) when (ex.ResultCode == SQLiteErrorCode.Constraint)
@@ -196,7 +197,7 @@ namespace UnicomTic_Management_System.Controllers
                         if (ex.Message.Contains("Phone")) { MessageBox.Show("This Mobile Number Already Registered!"); }
                         else if (ex.Message.Contains("NicNumber")) { MessageBox.Show("This NIC Number Already Registered!"); }
                         UserController.DeleteUser(lecturer.UserID);
-                        return "Failed";
+                        status = "Failed";
                     }
                 }
             }
@@ -204,8 +205,9 @@ namespace UnicomTic_Management_System.Controllers
             {
                 MessageBox.Show("Please Fill All Details");
                 UserController.DeleteUser(lecturer.UserID);
-                return "Failed";
+                status = "Failed";
             }
+            return status;
 
 
         }

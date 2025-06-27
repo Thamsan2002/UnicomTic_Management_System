@@ -34,6 +34,7 @@ namespace UnicomTic_Management_System.Controllers
         }
         public bool AddTimeTable(TimeTables timetable)
         {
+            bool result;
             if (!string.IsNullOrWhiteSpace(timetable.Date) && !string.IsNullOrWhiteSpace(timetable.StartTime) && !string.IsNullOrWhiteSpace(timetable.EndTime) &&
                 timetable.DepartmentID != 0 && timetable.CourseID != 0 && timetable.SubjectID != 0 && timetable.HallID != 0)
             {
@@ -51,14 +52,15 @@ namespace UnicomTic_Management_System.Controllers
                     cmd.Parameters.AddWithValue("@rid", timetable.HallID);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully TimeTable Added");
-                    return true;
+                    result = true;
                 }
             }
             else
             {
                 MessageBox.Show("Fill All Details!");
-                return false;
+                result = false;
             }
+            return result;
 
 
         }

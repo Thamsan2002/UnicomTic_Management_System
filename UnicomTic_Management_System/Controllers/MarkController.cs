@@ -94,8 +94,8 @@ namespace UnicomTic_Management_System.Controllers
                     }
 
                 }
-                return list;
             }
+            return list;
         }
         public void DeleteMark(int ID)
         {
@@ -114,6 +114,7 @@ namespace UnicomTic_Management_System.Controllers
         }
         public bool UpdateMark(Marks mark)
         {
+            bool result;
             if (!string.IsNullOrWhiteSpace(mark.Score) && mark.ID>0)
             {
                 if (mark.Score.All(Char.IsDigit))
@@ -129,22 +130,23 @@ namespace UnicomTic_Management_System.Controllers
                                 cmd.Parameters.AddWithValue("@score", mark.Score);
                                 cmd.ExecuteNonQuery();
                                 MessageBox.Show("Successfully ExamMarks Updated");
-                                return true;
+                                result = true;
                             }
 
                         }
                     }
                     else { MessageBox.Show("Enter a Valid Score!"); }
-                    return false;
+                    result = false;
                 }
                 else { MessageBox.Show("Score Number Only!"); }
-                return false;
+                result = false;
             }
             else
             {
                 MessageBox.Show("Enter a Marks!");
-                return false;
+                result = false;
             }
+            return result;
 
 
         }

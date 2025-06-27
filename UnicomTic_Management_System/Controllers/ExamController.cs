@@ -32,6 +32,7 @@ namespace UnicomTic_Management_System.Controllers
         }
         public int AddExam(Exams exam)
         {
+            int Id = 0;
             if (!string.IsNullOrWhiteSpace(exam.Date) && !string.IsNullOrWhiteSpace(exam.StartTime) && !string.IsNullOrWhiteSpace(exam.EndTime) &&
                 exam.DepartmentID != 0 && exam.CourseID != 0 && exam.SubjectID != 0 && exam.HallID != 0)
             {
@@ -49,16 +50,15 @@ namespace UnicomTic_Management_System.Controllers
                     cmd.Parameters.AddWithValue("@cid", exam.CourseID);
                     cmd.Parameters.AddWithValue("@sid", exam.SubjectID);
                     cmd.Parameters.AddWithValue("@rid", exam.HallID);
-                    int Id =Convert.ToInt32(cmd.ExecuteScalar());
+                    Id =Convert.ToInt32(cmd.ExecuteScalar());
                     MessageBox.Show("Successfully Exam Added");
-                    return Id;
                 }
             }
             else
             {
                 MessageBox.Show("Fill All Details!");
-                return 0;
             }
+            return Id;
 
 
         }
@@ -122,8 +122,8 @@ namespace UnicomTic_Management_System.Controllers
                     }
 
                 }
-                return list;
             }
+            return list;
         }
         public void UpdateExam(Exams exam)
         {

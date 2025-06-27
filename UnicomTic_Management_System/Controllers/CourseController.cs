@@ -60,8 +60,8 @@ namespace UnicomTic_Management_System.Controllers
                     }
 
                 }
-                return list;
             }
+            return list;
         }
         public void AddCourse(Courses course)
         {

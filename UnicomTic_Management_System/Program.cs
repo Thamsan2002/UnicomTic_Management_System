@@ -22,9 +22,9 @@ namespace UnicomTic_Management_System
             Application.SetCompatibleTextRenderingDefault(false);
             //if exists user table run login form or run admin register form
 
-            var result = Migration.ExistsUsersTable();
+            int result = Migration.ExistsUsersTable();
 
-            if ((int)result == 0)
+            if (result == 0)
             {
                 Application.Run(new AdminRegisterForm("SuperAdmin"));
                 Application.Run(new LoginForm());

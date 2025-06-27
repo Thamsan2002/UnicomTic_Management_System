@@ -180,18 +180,19 @@ namespace UnicomTic_Management_System.Repositories
             }
            
         }
-        internal static object ExistsUsersTable() 
+        internal static int ExistsUsersTable() 
         {
+            int result=0;
             using (SQLiteConnection connection =DatabaseManager.GetConnection())
             {
                 SQLiteCommand cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT Id FROM Users WHERE Id=@id";
-                cmd.Parameters.AddWithValue("@id",1);
-                int result = cmd.ExecuteNonQuery();
-                return result;
+                cmd.CommandText = "SELECT ID FROM Users WHERE Role=@role";
+                cmd.Parameters.AddWithValue("@role", "SuperAdmin");
+                 result =Convert.ToInt32(cmd.ExecuteScalar());
             }
+            return result;
         }
-        
+
     }
 }
 

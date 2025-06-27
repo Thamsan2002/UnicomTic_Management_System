@@ -41,7 +41,6 @@ namespace UnicomTic_Management_System.Views
             textBox_Phone.Clear();
             textBox_NicNo.Clear();
             textBox_Salary.Clear();
-            comboBox_Course.SelectedIndex = 0;
             comboBox_Department.SelectedIndex = 0;
             radioButton_Male.Checked = false;
             radioButton_Female.Checked = false;
@@ -67,8 +66,6 @@ namespace UnicomTic_Management_System.Views
             if (Data.Contains("Department")) { label_Department.Text = "*Department is Required"; }
             if (CurrentPlace == "Salary") { return; }
             if (Data.Contains("Salary")) { label_Salary.Text = "*Salary is Required"; }
-            if (CurrentPlace == "Course") { return; }
-            if (Data.Contains("Course")) { label_Course.Text = "*Course is Required"; }
         }
         private void LoadDepartments() 
         {
@@ -77,17 +74,9 @@ namespace UnicomTic_Management_System.Views
             comboBox_Department.DisplayMember = "Name";
             comboBox_Department.ValueMember = "ID";
         }
-        private void LoadCourses() 
-        {
-            CourseController courseController = new CourseController();
-            comboBox_Course.DataSource = courseController.ViewCourses(lecturer.DepartmentName);
-            comboBox_Course.DisplayMember = "Name";
-            comboBox_Course.ValueMember = "ID";
-        }
         private void LecturerRegisterForm_Load(object sender, EventArgs e)
         {
             LoadDepartments();
-            LoadCourses();
         }
 
         private void textBox_FirstName_TextChanged(object sender, EventArgs e)
@@ -135,7 +124,6 @@ namespace UnicomTic_Management_System.Views
         {
             comboBox_Department.ForeColor = Color.Black;
             lecturer.DepartmentName = comboBox_Department.Text.Trim();
-            LoadCourses();
             label_Department.Text = null;
         }
         private void textBox_Salary_TextChanged(object sender, EventArgs e)
@@ -144,12 +132,7 @@ namespace UnicomTic_Management_System.Views
             lecturer.Salary = textBox_Salary.Text.Trim();
             label_Salary.Text = null;
         }
-        private void comboBox_Course_TextChanged(object sender, EventArgs e)
-        {
-            comboBox_Course.ForeColor = Color.Black;
-            lecturer.CourseName = comboBox_Course.Text.Trim();
-            label_Course.Text = null;
-        }
+     
 
         private void radioButton_Male_CheckedChanged(object sender, EventArgs e)
         {
@@ -225,18 +208,6 @@ namespace UnicomTic_Management_System.Views
             
         }
 
-        private void comboBox_Course_Click(object sender, EventArgs e)
-        {
-            if(comboBox_Course.ForeColor != Color.Black) {comboBox_Course.Text = null;}
-            CheckEmptyFields("Course");
-        }
-
-        private void comboBox_Course_DropDown(object sender, EventArgs e)
-        {
-            if (comboBox_Course.ForeColor != Color.Black) { comboBox_Course.Text = null; }
-            CheckEmptyFields("Course");
-        }
-
         private void checkBox_Auto_CheckedChanged(object sender, EventArgs e)
         {
             if(checkBox_Auto.Checked == true) { checkBox_Manual.Checked = false;}
@@ -260,11 +231,10 @@ namespace UnicomTic_Management_System.Views
 
         private void button_Register_Click(object sender, EventArgs e)
         {
-            lecturer.CourseID = Convert.ToInt32((comboBox_Course.SelectedValue));
             lecturer.DepartmentID = Convert.ToInt32((comboBox_Department.SelectedValue));
             CheckEmptyFields("btn_add");
             if (radioButton_Male.Checked) { lecturer.Gender = radioButton_Male.Text; }
-            else if (radioButton_Female.Checked) { lecturer.Gender = radioButton_Male.Text; }
+            else if (radioButton_Female.Checked) { lecturer.Gender = radioButton_Female.Text; }
             if (checkBox_Auto.Checked) { user.UserNameCreateType = "Auto"; }
             else if (checkBox_Manual.Checked) { user.UserNameCreateType = "Manual"; }
             lecturer.Date = DateTime.Now.ToString("yyyy-MM-dd");

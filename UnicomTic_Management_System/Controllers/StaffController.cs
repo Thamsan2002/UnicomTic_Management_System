@@ -22,6 +22,11 @@ namespace UnicomTic_Management_System.Controllers
                 {
                     Deta.Add(prop.Name);
                 }
+                else if (prop.PropertyType == typeof(int) && Convert.ToInt32(prop.GetValue(staff)) == 0)
+                {
+
+                    Deta.Add(prop.Name);
+                }
             }
             if (string.IsNullOrWhiteSpace(GMail)) { Deta.Add("Gmail"); }
             return Deta;
@@ -87,6 +92,7 @@ namespace UnicomTic_Management_System.Controllers
         }
         public string StaffRegister(Staffs staff) 
         {
+            string status;
             if(!string.IsNullOrWhiteSpace(staff.FirstName) && !string.IsNullOrWhiteSpace(staff.LastName) && !string.IsNullOrWhiteSpace(staff.NicNo) 
                 && !string.IsNullOrWhiteSpace(staff.Address) && !string.IsNullOrWhiteSpace(staff.Phone) && !string.IsNullOrWhiteSpace(staff.Designation) 
                 && !string.IsNullOrWhiteSpace(Convert.ToString(staff.Salary)) && !string.IsNullOrWhiteSpace(staff.Gender)) 
@@ -98,17 +104,17 @@ namespace UnicomTic_Management_System.Controllers
                 if (PoneResult == "Invalid")
                 {
                     UserController.DeleteUser(staff.UserID);
-                    return "Failed";
+                    status = "Failed";
                 }
                 else if (NicResult == "Invalid")
                 {
                     UserController.DeleteUser(staff.UserID);
-                    return "Failed";
+                    status = "Failed";
                 }
                 else if (SalaryResult == "Invalid") 
                 {
                     UserController.DeleteUser(staff.UserID);
-                    return "Failed";
+                    status = "Failed";
                 }
                 else
                 {
@@ -131,7 +137,7 @@ namespace UnicomTic_Management_System.Controllers
                             cmd.Parameters.AddWithValue("@userid", staff.UserID);
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Staff Registered Successfully");
-                            return "Success";
+                            status = "Success";
                         }
                     }
                     catch (SQLiteException ex) when (ex.ResultCode == SQLiteErrorCode.Constraint)
@@ -139,7 +145,7 @@ namespace UnicomTic_Management_System.Controllers
                         if (ex.Message.Contains("Phone")) { MessageBox.Show("This Mobile Number Already Registered!"); }
                         else if (ex.Message.Contains("NicNumber")) { MessageBox.Show("This NIC Number Already Registered!"); }
                         UserController.DeleteUser(staff.UserID);
-                        return "Failed";
+                        status = "Failed";
                     }
                 }
             }
@@ -147,8 +153,9 @@ namespace UnicomTic_Management_System.Controllers
             {
                 MessageBox.Show("Please Fill All Details");
                 UserController.DeleteUser(staff.UserID);
-                return "Failed";
+                status = "Failed";
             }
+            return status;
         }
         public void DeleteStaff(Staffs staff)
         {

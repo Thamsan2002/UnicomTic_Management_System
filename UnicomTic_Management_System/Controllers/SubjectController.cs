@@ -28,6 +28,7 @@ namespace UnicomTic_Management_System.Controllers
         }
         public int AddSubject(Subjects subject,int CourseID)
         {
+            int ID = 0;
             if (!string.IsNullOrWhiteSpace(subject.Name) && CourseID > 0 && subject.DepartmentID > 0 && subject.LecturerID >0) 
             {
                 using (SQLiteConnection connect = DatabaseManager.GetConnection())
@@ -38,18 +39,16 @@ namespace UnicomTic_Management_System.Controllers
                     cmd.Parameters.AddWithValue("@name", subject.Name);
                     cmd.Parameters.AddWithValue("@did", subject.DepartmentID);
                     cmd.Parameters.AddWithValue("@lid", subject.LecturerID);
-                    int ID =Convert.ToInt32(cmd.ExecuteScalar());
-                    return ID;
+                    ID =Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             else
             {
                 MessageBox.Show("Fill Required Details!");
-                return -1;
             }
-
-
+            return ID;
         }
+
         public List<Subjects> ViewSubjects(string Search)
         {
             List<Subjects> list = new List<Subjects>();
@@ -105,8 +104,8 @@ namespace UnicomTic_Management_System.Controllers
                     }
 
                 }
-                return list;
             }
+            return list;
         }
         public List<Subjects> LoadSubjectsName(int CourseID) 
         {
@@ -149,6 +148,7 @@ namespace UnicomTic_Management_System.Controllers
         }
         public bool DeleteSubject(int SubjectID)
         {
+            bool result = false;
             if (SubjectID > 0) 
             {
                 using(SQLiteConnection connect = DatabaseManager.GetConnection()) 
@@ -157,15 +157,15 @@ namespace UnicomTic_Management_System.Controllers
                     cmd.CommandText = @"DELETE FROM Subjects WHERE ID = @id";
                     cmd.Parameters.AddWithValue("@id", SubjectID);
                     cmd.ExecuteNonQuery();
-                    return true;
+                    result = true;
 
                 }
             }
             else 
             {
                 MessageBox.Show("Select a Subject!");
-                return false;
             }
+            return result;
         }
     }
 }

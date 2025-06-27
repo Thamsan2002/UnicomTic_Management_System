@@ -364,7 +364,6 @@
     <EmbeddedResource Include="Views\ViewStudentForm.resx">
       <DependentUpon>ViewStudentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="bin\Debug\unicomtic.db" />
     <None Include="bin\Debug\UnicomTic_Management_System.exe.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
