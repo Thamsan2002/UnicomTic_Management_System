@@ -38,19 +38,21 @@ namespace UnicomTic_Management_System.Controllers
             {
                 using (SQLiteConnection connect = DatabaseManager.GetConnection())
                 {
-                    SQLiteCommand cmd = connect.CreateCommand();
-                    cmd.CommandText = @"INSERT INTO Exams(Date,StartTime,EndTime,Heading,DepartmentsID,CoursesID,SubjectsID,RoomsID) 
+                    using (SQLiteCommand cmd = connect.CreateCommand()) 
+                    {
+                        cmd.CommandText = @"INSERT INTO Exams(Date,StartTime,EndTime,Heading,DepartmentsID,CoursesID,SubjectsID,RoomsID) 
                                         VALUES(@date,@stime,@etime,@heding,@did,@cid,@sid,@rid);
                                         SELECT last_insert_rowid();";
-                    cmd.Parameters.AddWithValue("@date", exam.Date);
-                    cmd.Parameters.AddWithValue("@stime", exam.StartTime);
-                    cmd.Parameters.AddWithValue("@etime", exam.EndTime);
-                    cmd.Parameters.AddWithValue("@heding", exam.Heading);
-                    cmd.Parameters.AddWithValue("@did", exam.DepartmentID);
-                    cmd.Parameters.AddWithValue("@cid", exam.CourseID);
-                    cmd.Parameters.AddWithValue("@sid", exam.SubjectID);
-                    cmd.Parameters.AddWithValue("@rid", exam.HallID);
-                    Id =Convert.ToInt32(cmd.ExecuteScalar());
+                        cmd.Parameters.AddWithValue("@date", exam.Date);
+                        cmd.Parameters.AddWithValue("@stime", exam.StartTime);
+                        cmd.Parameters.AddWithValue("@etime", exam.EndTime);
+                        cmd.Parameters.AddWithValue("@heding", exam.Heading);
+                        cmd.Parameters.AddWithValue("@did", exam.DepartmentID);
+                        cmd.Parameters.AddWithValue("@cid", exam.CourseID);
+                        cmd.Parameters.AddWithValue("@sid", exam.SubjectID);
+                        cmd.Parameters.AddWithValue("@rid", exam.HallID);
+                        Id = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
                     MessageBox.Show("Successfully Exam Added");
                 }
             }
@@ -72,56 +74,58 @@ namespace UnicomTic_Management_System.Controllers
             List<Exams> list = new List<Exams>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = @"SELECT  Exams.ID, Exams.Date, Exams.StartTime,Exams.EndTime,Exams.Heading, Exams.DepartmentsID, Exams.CoursesID, Exams.SubjectsID, Exams.RoomsID,
+                using (SQLiteCommand cmd = connect.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT  Exams.ID, Exams.Date, Exams.StartTime,Exams.EndTime,Exams.Heading, Exams.DepartmentsID, Exams.CoursesID, Exams.SubjectsID, Exams.RoomsID,
                                     Departments.Name AS DepartmentName, Courses.Name AS CourseName, Subjects.Name AS SubjectName, Rooms.Name AS RoomName
                                     FROM Exams LEFT JOIN Departments ON Exams.DepartmentsID = Departments.ID
                                     LEFT JOIN Courses ON Exams.CoursesID = Courses.ID
                                     LEFT JOIN Subjects ON Exams.SubjectsID = Subjects.ID
                                     LEFT JOIN Rooms ON Exams.RoomsID = Rooms.ID";
-                var reading = cmd.ExecuteReader();
-                while (reading.Read())
-                {
-                    if (role != "Student")
-                    {
-                        list.Add(new Exams
+                    using (var reading = cmd.ExecuteReader())
+                        while (reading.Read())
                         {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            Date = reading["Date"].ToString(),
-                            StartTime = reading["StartTime"].ToString(),
-                            EndTime = reading["EndTime"].ToString(),
-                            Heading = reading["Heading"].ToString(),
-                            DepartmentName = reading["DepartmentName"].ToString(),
-                            DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
-                            SubjectName = reading["SubjectName"].ToString(),
-                            SubjectID = Convert.ToInt32(reading["SubjectsID"]),
-                            CourseName = reading["CourseName"].ToString(),
-                            CourseID = Convert.ToInt32(reading["CoursesID"]),
-                            HallName = reading["RoomName"].ToString(),
-                            HallID = Convert.ToInt32(reading["RoomsID"])
-                        });
-                    }
-                    else if (reading["CoursesID"].ToString() == CourseID.ToString())
-                    {
-                        list.Add(new Exams
-                        {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            Date = reading["Date"].ToString(),
-                            StartTime = reading["StartTime"].ToString(),
-                            EndTime = reading["EndTime"].ToString(),
-                            Heading = reading["Heading"].ToString(),
-                            DepartmentName = reading["DepartmentName"].ToString(),
-                            DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
-                            SubjectName = reading["SubjectName"].ToString(),
-                            SubjectID = Convert.ToInt32(reading["SubjectsID"]),
-                            CourseName = reading["CourseName"].ToString(),
-                            CourseID = Convert.ToInt32(reading["CoursesID"]),
-                            HallName = reading["RoomName"].ToString(),
-                            HallID = Convert.ToInt32(reading["RoomsID"])
-                        });
-                    }
+                            if (role != "Student")
+                            {
+                                list.Add(new Exams
+                                {
+                                    ID = Convert.ToInt32(reading["ID"]),
+                                    Date = reading["Date"].ToString(),
+                                    StartTime = reading["StartTime"].ToString(),
+                                    EndTime = reading["EndTime"].ToString(),
+                                    Heading = reading["Heading"].ToString(),
+                                    DepartmentName = reading["DepartmentName"].ToString(),
+                                    DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
+                                    SubjectName = reading["SubjectName"].ToString(),
+                                    SubjectID = Convert.ToInt32(reading["SubjectsID"]),
+                                    CourseName = reading["CourseName"].ToString(),
+                                    CourseID = Convert.ToInt32(reading["CoursesID"]),
+                                    HallName = reading["RoomName"].ToString(),
+                                    HallID = Convert.ToInt32(reading["RoomsID"])
+                                });
+                            }
+                            else if (reading["CoursesID"].ToString() == CourseID.ToString())
+                            {
+                                list.Add(new Exams
+                                {
+                                    ID = Convert.ToInt32(reading["ID"]),
+                                    Date = reading["Date"].ToString(),
+                                    StartTime = reading["StartTime"].ToString(),
+                                    EndTime = reading["EndTime"].ToString(),
+                                    Heading = reading["Heading"].ToString(),
+                                    DepartmentName = reading["DepartmentName"].ToString(),
+                                    DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
+                                    SubjectName = reading["SubjectName"].ToString(),
+                                    SubjectID = Convert.ToInt32(reading["SubjectsID"]),
+                                    CourseName = reading["CourseName"].ToString(),
+                                    CourseID = Convert.ToInt32(reading["CoursesID"]),
+                                    HallName = reading["RoomName"].ToString(),
+                                    HallID = Convert.ToInt32(reading["RoomsID"])
+                                });
+                            }
 
-                }
+                        }
+                } 
             }
             return list;
         }
@@ -165,10 +169,12 @@ namespace UnicomTic_Management_System.Controllers
             {
                 using (SQLiteConnection connect = DatabaseManager.GetConnection())
                 {
-                    SQLiteCommand cmd = connect.CreateCommand();
-                    cmd.CommandText = "DELETE FROM Exams WHERE ID=@id";
-                    cmd.Parameters.AddWithValue("@id", ID);
-                    cmd.ExecuteNonQuery();
+                    using (SQLiteCommand cmd = connect.CreateCommand()) 
+                    {
+                        cmd.CommandText = "DELETE FROM Exams WHERE ID=@id";
+                        cmd.Parameters.AddWithValue("@id", ID);
+                        cmd.ExecuteNonQuery();
+                    }
                     MessageBox.Show("SuccessFully Exam Removed");
                 }
             }

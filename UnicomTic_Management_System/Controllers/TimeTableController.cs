@@ -40,17 +40,19 @@ namespace UnicomTic_Management_System.Controllers
             {
                 using (SQLiteConnection connect = DatabaseManager.GetConnection())
                 {
-                    SQLiteCommand cmd = connect.CreateCommand();
-                    cmd.CommandText = @"INSERT INTO TimeTables(Date,StartTime,EndTime,DepartmentsID,CoursesID,SubjectsID,RoomsID) 
+                    using (SQLiteCommand cmd = connect.CreateCommand()) 
+                    {
+                        cmd.CommandText = @"INSERT INTO TimeTables(Date,StartTime,EndTime,DepartmentsID,CoursesID,SubjectsID,RoomsID) 
                                         VALUES(@date,@stime,@etime,@did,@cid,@sid,@rid)";
-                    cmd.Parameters.AddWithValue("@date", timetable.Date);
-                    cmd.Parameters.AddWithValue("@stime", timetable.StartTime);
-                    cmd.Parameters.AddWithValue("@etime", timetable.EndTime);
-                    cmd.Parameters.AddWithValue("@did", timetable.DepartmentID);
-                    cmd.Parameters.AddWithValue("@cid", timetable.CourseID);
-                    cmd.Parameters.AddWithValue("@sid", timetable.SubjectID);
-                    cmd.Parameters.AddWithValue("@rid", timetable.HallID);
-                    cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@date", timetable.Date);
+                        cmd.Parameters.AddWithValue("@stime", timetable.StartTime);
+                        cmd.Parameters.AddWithValue("@etime", timetable.EndTime);
+                        cmd.Parameters.AddWithValue("@did", timetable.DepartmentID);
+                        cmd.Parameters.AddWithValue("@cid", timetable.CourseID);
+                        cmd.Parameters.AddWithValue("@sid", timetable.SubjectID);
+                        cmd.Parameters.AddWithValue("@rid", timetable.HallID);
+                        cmd.ExecuteNonQuery();
+                    }
                     MessageBox.Show("Successfully TimeTable Added");
                     result = true;
                 }
@@ -106,57 +108,59 @@ namespace UnicomTic_Management_System.Controllers
             List<TimeTables> list = new List<TimeTables>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = @"SELECT  TimeTables.ID, TimeTables.Date, TimeTables.StartTime,TimeTables.EndTime, TimeTables.DepartmentsID, TimeTables.CoursesID, TimeTables.SubjectsID, TimeTables.RoomsID,
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
+                {
+                    cmd.CommandText = @"SELECT  TimeTables.ID, TimeTables.Date, TimeTables.StartTime,TimeTables.EndTime, TimeTables.DepartmentsID, TimeTables.CoursesID, TimeTables.SubjectsID, TimeTables.RoomsID,
                                     Departments.Name AS DepartmentName, Courses.Name AS CourseName, Subjects.Name AS SubjectName, Rooms.Name AS RoomName
                                     FROM TimeTables LEFT JOIN Departments ON TimeTables.DepartmentsID = Departments.ID
                                     LEFT JOIN Courses ON TimeTables.CoursesID = Courses.ID
                                     LEFT JOIN Subjects ON TimeTables.SubjectsID = Subjects.ID
                                     LEFT JOIN Rooms ON TimeTables.RoomsID = Rooms.ID";
-                var reading = cmd.ExecuteReader();
-                while (reading.Read())
-                {
-                    if (role != "Student")
-                    {
-                        list.Add(new TimeTables
+                    using (var reading = cmd.ExecuteReader())
+                        while (reading.Read())
                         {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            Date = reading["Date"].ToString(),
-                            StartTime = reading["StartTime"].ToString(),
-                            EndTime = reading["EndTime"].ToString(),
-                            DepartmentName = reading["DepartmentName"].ToString(),
-                            DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
-                            SubjectName = reading["SubjectName"].ToString(),
-                            SubjectID = Convert.ToInt32(reading["SubjectsID"]),
-                            CourseName = reading["CourseName"].ToString(),
-                            CourseID = Convert.ToInt32(reading["CoursesID"]),
-                            HallName = reading["RoomName"].ToString(),
-                            HallID = Convert.ToInt32(reading["RoomsID"])
+                            if (role != "Student")
+                            {
+                                list.Add(new TimeTables
+                                {
+                                    ID = Convert.ToInt32(reading["ID"]),
+                                    Date = reading["Date"].ToString(),
+                                    StartTime = reading["StartTime"].ToString(),
+                                    EndTime = reading["EndTime"].ToString(),
+                                    DepartmentName = reading["DepartmentName"].ToString(),
+                                    DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
+                                    SubjectName = reading["SubjectName"].ToString(),
+                                    SubjectID = Convert.ToInt32(reading["SubjectsID"]),
+                                    CourseName = reading["CourseName"].ToString(),
+                                    CourseID = Convert.ToInt32(reading["CoursesID"]),
+                                    HallName = reading["RoomName"].ToString(),
+                                    HallID = Convert.ToInt32(reading["RoomsID"])
 
-                        });
-                    }
-                    else if (reading["CoursesID"].ToString() == CourseID.ToString())
-                    {
-                        list.Add(new TimeTables
-                        {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            Date = reading["Date"].ToString(),
-                            StartTime = reading["StartTime"].ToString(),
-                            EndTime = reading["EndTime"].ToString(),
-                            DepartmentName = reading["DepartmentName"].ToString(),
-                            DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
-                            SubjectName = reading["SubjectName"].ToString(),
-                            SubjectID = Convert.ToInt32(reading["SubjectsID"]),
-                            CourseName = reading["CourseName"].ToString(),
-                            CourseID = Convert.ToInt32(reading["CoursesID"]),
-                            HallName = reading["RoomName"].ToString(),
-                            HallID = Convert.ToInt32(reading["RoomsID"])
-                        });
-                    }
+                                });
+                            }
+                            else if (reading["CoursesID"].ToString() == CourseID.ToString())
+                            {
+                                list.Add(new TimeTables
+                                {
+                                    ID = Convert.ToInt32(reading["ID"]),
+                                    Date = reading["Date"].ToString(),
+                                    StartTime = reading["StartTime"].ToString(),
+                                    EndTime = reading["EndTime"].ToString(),
+                                    DepartmentName = reading["DepartmentName"].ToString(),
+                                    DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
+                                    SubjectName = reading["SubjectName"].ToString(),
+                                    SubjectID = Convert.ToInt32(reading["SubjectsID"]),
+                                    CourseName = reading["CourseName"].ToString(),
+                                    CourseID = Convert.ToInt32(reading["CoursesID"]),
+                                    HallName = reading["RoomName"].ToString(),
+                                    HallID = Convert.ToInt32(reading["RoomsID"])
+                                });
+                            }
 
+                        }
                 }
-                return list;
             }
+            return list;
         }
         public void DeleteTimeTable(int ID) 
         {

@@ -59,19 +59,21 @@ namespace UnicomTic_Management_System.Controllers
                     {
                         using (SQLiteConnection connect = DatabaseManager.GetConnection())
                         {
-                            SQLiteCommand cmd = connect.CreateCommand();
-                            cmd.CommandText = @"INSERT INTO Admins(Date,FirstName,LastName,Phone,Address,NicNumber,Gender,AccessLevel,UsersID)
+                            using (SQLiteCommand cmd = connect.CreateCommand())
+                            {
+                                cmd.CommandText = @"INSERT INTO Admins(Date,FirstName,LastName,Phone,Address,NicNumber,Gender,AccessLevel,UsersID)
                                         VALUES(@date,@firstname,@lastname,@phone,@address,@nic,@gender,@accesslevel,@userid)";
-                            cmd.Parameters.AddWithValue("@date", admin.Date);
-                            cmd.Parameters.AddWithValue("@firstname", admin.FirstName);
-                            cmd.Parameters.AddWithValue("@lastname", admin.LastName);
-                            cmd.Parameters.AddWithValue("@phone", admin.Phone);
-                            cmd.Parameters.AddWithValue("@address", admin.Address);
-                            cmd.Parameters.AddWithValue("@nic", admin.NicNo);
-                            cmd.Parameters.AddWithValue("@gender", admin.Gender);
-                            cmd.Parameters.AddWithValue("accesslevel", admin.AccessLevel);
-                            cmd.Parameters.AddWithValue("@userid", admin.UserID);
-                            cmd.ExecuteNonQuery();
+                                cmd.Parameters.AddWithValue("@date", admin.Date);
+                                cmd.Parameters.AddWithValue("@firstname", admin.FirstName);
+                                cmd.Parameters.AddWithValue("@lastname", admin.LastName);
+                                cmd.Parameters.AddWithValue("@phone", admin.Phone);
+                                cmd.Parameters.AddWithValue("@address", admin.Address);
+                                cmd.Parameters.AddWithValue("@nic", admin.NicNo);
+                                cmd.Parameters.AddWithValue("@gender", admin.Gender);
+                                cmd.Parameters.AddWithValue("accesslevel", admin.AccessLevel);
+                                cmd.Parameters.AddWithValue("@userid", admin.UserID);
+                                cmd.ExecuteNonQuery();
+                            }
                             MessageBox.Show("Admin Registered Successfully");
                             status= "Success";
                         }
@@ -100,53 +102,56 @@ namespace UnicomTic_Management_System.Controllers
             List<Admins> list = new List<Admins>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection()) 
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Admins";
-                using (var Readings = cmd.ExecuteReader()) 
+                using (SQLiteCommand cmd = connect.CreateCommand())
                 {
-                    while (Readings.Read())
+                    cmd.CommandText = "SELECT * FROM Admins";
+                    using (var Readings = cmd.ExecuteReader()) 
                     {
-                        if (string.IsNullOrWhiteSpace(Search))
+                        while (Readings.Read())
                         {
-                            list.Add(new Admins
+                            if (string.IsNullOrWhiteSpace(Search))
                             {
-                                Id = Convert.ToInt32(Readings[0]),
-                                Date = Readings[1].ToString(),
-                                FirstName = Readings[2].ToString(),
-                                LastName = Readings[3].ToString(),
-                                Address = Readings[4].ToString(),
-                                Phone = Readings[5].ToString(),
-                                Gender = Readings[6].ToString(),
-                                NicNo = Readings[7].ToString(),
-                                AccessLevel = Readings[8].ToString(),
-                                UserID = Convert.ToInt32(Readings[9])
-                            });
-                        }
-                        else
-                        {
-                            for (int j = 1; j <= 9; j++)
-                            {
-                                if (Readings[j].ToString().Contains(Search))
+                                list.Add(new Admins
                                 {
-                                    list.Add(new Admins
+                                    Id = Convert.ToInt32(Readings[0]),
+                                    Date = Readings[1].ToString(),
+                                    FirstName = Readings[2].ToString(),
+                                    LastName = Readings[3].ToString(),
+                                    Address = Readings[4].ToString(),
+                                    Phone = Readings[5].ToString(),
+                                    Gender = Readings[6].ToString(),
+                                    NicNo = Readings[7].ToString(),
+                                    AccessLevel = Readings[8].ToString(),
+                                    UserID = Convert.ToInt32(Readings[9])
+                                });
+                            }
+                            else
+                            {
+                                for (int j = 1; j <= 9; j++)
+                                {
+                                    if (Readings[j].ToString().Contains(Search))
                                     {
-                                        Id = Convert.ToInt32(Readings[0]),
-                                        Date = Readings[1].ToString(),
-                                        FirstName = Readings[2].ToString(),
-                                        LastName = Readings[3].ToString(),
-                                        Address = Readings[4].ToString(),
-                                        Phone = Readings[5].ToString(),
-                                        Gender = Readings[6].ToString(),
-                                        NicNo = Readings[7].ToString(),
-                                        AccessLevel = Readings[8].ToString(),
-                                        UserID = Convert.ToInt32(Readings[9])
-                                    });
-                                    break;
+                                        list.Add(new Admins
+                                        {
+                                            Id = Convert.ToInt32(Readings[0]),
+                                            Date = Readings[1].ToString(),
+                                            FirstName = Readings[2].ToString(),
+                                            LastName = Readings[3].ToString(),
+                                            Address = Readings[4].ToString(),
+                                            Phone = Readings[5].ToString(),
+                                            Gender = Readings[6].ToString(),
+                                            NicNo = Readings[7].ToString(),
+                                            AccessLevel = Readings[8].ToString(),
+                                            UserID = Convert.ToInt32(Readings[9])
+                                        });
+                                        break;
+                                    }
                                 }
                             }
-                        }
 
+                        }
                     }
+                        
                 }
             }
             return list;
@@ -161,10 +166,12 @@ namespace UnicomTic_Management_System.Controllers
                 {
                     using (SQLiteConnection connect = DatabaseManager.GetConnection())
                     {
-                        SQLiteCommand cmd = connect.CreateCommand();
-                        cmd.CommandText = "DELETE FROM Admins WHERE ID=@id";
-                        cmd.Parameters.AddWithValue("@id", admin.Id);
-                        cmd.ExecuteNonQuery();
+                        using (SQLiteCommand cmd = connect.CreateCommand()) 
+                        {
+                            cmd.CommandText = "DELETE FROM Admins WHERE ID=@id";
+                            cmd.Parameters.AddWithValue("@id", admin.Id);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                     UserController.DeleteUser(admin.UserID);
                     MessageBox.Show("Admin Deleted Successfully");

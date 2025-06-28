@@ -107,12 +107,20 @@ namespace UnicomTic_Management_System.Views
         }
         private void radiomale_CheckedChanged(object sender, EventArgs e)
         {
-            if (radiomale.Checked) { la_Gender.Text = null; }
+            if (radiomale.Checked) 
+            {
+                la_Gender.Text = null; 
+                admin.Gender =radiomale.Text;
+            }
         }
 
         private void radiofemale_CheckedChanged(object sender, EventArgs e)
         {
-            if (radiofemale.Checked) {la_Gender.Text=null; }
+            if (radiofemale.Checked) 
+            {
+                la_Gender.Text=null;
+                admin.Gender =radiofemale.Text;
+            }
         }
         private void checkBox_Manual_CheckedChanged(object sender, EventArgs e)
         {
@@ -174,8 +182,6 @@ namespace UnicomTic_Management_System.Views
         private void btn_add_Click(object sender, EventArgs e)
         {
             CheckEmptyFields("btn_add");
-            if (radiomale.Checked) { admin.Gender = radiomale.Text; }
-            else if (radiofemale.Checked) { admin.Gender = radiofemale.Text; }
             if (checkBox_Auto.Checked) { users.UserNameCreateType = "Auto"; }
             else if (checkBox_Manual.Checked) { users.UserNameCreateType = "Manual"; }
             admin.Date = DateTime.Now.ToString("yyyy-MM-dd");

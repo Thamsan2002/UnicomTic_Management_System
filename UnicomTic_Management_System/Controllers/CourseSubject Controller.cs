@@ -15,22 +15,26 @@ namespace UnicomTic_Management_System.Controllers
         {
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = "INSERT INTO CourseSubject(CoursesID, SubjectsID) VALUES(@cid,@sid)";
-                cmd.Parameters.AddWithValue("@cid", courseSubject.CourseID);
-                cmd.Parameters.AddWithValue("@sid", courseSubject.SubjectID);
-                cmd.ExecuteNonQuery();
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
+                {
+                    cmd.CommandText = "INSERT INTO CourseSubject(CoursesID, SubjectsID) VALUES(@cid,@sid)";
+                    cmd.Parameters.AddWithValue("@cid", courseSubject.CourseID);
+                    cmd.Parameters.AddWithValue("@sid", courseSubject.SubjectID);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
         public void DeleteCourseSubject(CourseSubject courseSubject) 
         {
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = "DELETE FROM CourseSubject WHERE CoursesID =@cid AND SubjectsID = @sid";
-                cmd.Parameters.AddWithValue("@cid", courseSubject.CourseID);
-                cmd.Parameters.AddWithValue("@sid", courseSubject.SubjectID);
-                cmd.ExecuteNonQuery();
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
+                {
+                    cmd.CommandText = "DELETE FROM CourseSubject WHERE CoursesID =@cid AND SubjectsID = @sid";
+                    cmd.Parameters.AddWithValue("@cid", courseSubject.CourseID);
+                    cmd.Parameters.AddWithValue("@sid", courseSubject.SubjectID);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }

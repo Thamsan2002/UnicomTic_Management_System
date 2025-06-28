@@ -17,16 +17,18 @@ namespace UnicomTic_Management_System.Controllers
             List<Departments> list = new List<Departments>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Departments";
-                var Readings = cmd.ExecuteReader();
-                while (Readings.Read())
+                using(SQLiteCommand cmd = connect.CreateCommand())
                 {
-                    list.Add(new Departments
-                    {
-                        ID = Readings.GetInt32(0),
-                        Name = Readings.GetString(1)
-                    });
+                    cmd.CommandText = "SELECT * FROM Departments";
+                    using (var Readings = cmd.ExecuteReader())
+                        while (Readings.Read())
+                        {
+                            list.Add(new Departments
+                            {
+                                ID = Readings.GetInt32(0),
+                                Name = Readings.GetString(1)
+                            });
+                        }
                 }
             }
             return list;
@@ -39,10 +41,12 @@ namespace UnicomTic_Management_System.Controllers
                 {
                     using (SQLiteConnection connect = DatabaseManager.GetConnection())
                     {
-                        SQLiteCommand cmd = connect.CreateCommand();
-                        cmd.CommandText = "INSERT INTO Departments(Name) VALUES(@name)";
-                        cmd.Parameters.AddWithValue("@name", department.Name);
-                        cmd.ExecuteNonQuery();
+                        using (SQLiteCommand cmd = connect.CreateCommand()) 
+                        {
+                            cmd.CommandText = "INSERT INTO Departments(Name) VALUES(@name)";
+                            cmd.Parameters.AddWithValue("@name", department.Name);
+                            cmd.ExecuteNonQuery();
+                        }
                         MessageBox.Show("Department Added Successfully");
                     }
                 }
@@ -57,22 +61,23 @@ namespace UnicomTic_Management_System.Controllers
             {
                 using (SQLiteConnection connect = DatabaseManager.GetConnection())
                 {
-                    SQLiteCommand cmd = connect.CreateCommand();
-                    cmd.CommandText = "SELECT COUNT(*) FROM Courses WHERE DepartmentsID=@id";
-                    cmd.Parameters.AddWithValue("@id", department.ID);
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    if (count > 0) { MessageBox.Show($"This Department Have {count} Active Subject!"); }
-                    else
+                    using (SQLiteCommand cmd = connect.CreateCommand()) 
                     {
-                        cmd.CommandText = "DELETE FROM Departments WHERE ID=@id";
+                        cmd.CommandText = "SELECT COUNT(*) FROM Courses WHERE DepartmentsID=@id";
                         cmd.Parameters.AddWithValue("@id", department.ID);
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Department Deleted Successfully!");
-                    }
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        if (count > 0) { MessageBox.Show($"This Department Have {count} Active Subject!"); }
+                        else
+                        {
+                            cmd.CommandText = "DELETE FROM Departments WHERE ID=@id";
+                            cmd.Parameters.AddWithValue("@id", department.ID);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Department Deleted Successfully!");
+                        }
+                    }    
                 }
             }
             else { MessageBox.Show("Choose a Department"); }
-
         }
     }
 }

@@ -13,28 +13,36 @@ namespace UnicomTic_Management_System.Controllers
     {
         public void AddStudentSubject(int CourseID,int StudentID) 
         {
+            List<int> list = new List<int>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection()) 
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = "SELECT SubjectsID FROM CourseSubject WHERE CoursesID =@cid";
-                cmd.Parameters.AddWithValue("@cid",CourseID);
-                var Readings = cmd.ExecuteReader();
-                while (Readings.Read()) 
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
                 {
-                    SQLiteCommand command = connect.CreateCommand();
-                    command.CommandText = "INSERT INTO StudentSubject(StudentsID,SubjectsID) VALUES(@stid,@suid)";
-                    command.Parameters.AddWithValue("@stid", StudentID);
-                    command.Parameters.AddWithValue("@suid", Convert.ToInt32(Readings["SubjectsID"]));
-                    command.ExecuteNonQuery();
-                }
+                    cmd.CommandText = "SELECT SubjectsID FROM CourseSubject WHERE CoursesID =@cid";
+                    cmd.Parameters.AddWithValue("@cid", CourseID);
+                    using (var Readings = cmd.ExecuteReader())
+                        while (Readings.Read())
+                        {
+                            list.Add(Convert.ToInt32(Readings[0]));
+                        }
+                    foreach (int id in list)
+                    {
+                        cmd.CommandText = "INSERT INTO StudentSubject(StudentsID,SubjectsID) VALUES(@stid,@suid)";
+                        cmd.Parameters.AddWithValue("@stid", StudentID);
+                        cmd.Parameters.AddWithValue("@suid", id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }  
             }
         }
         public static void DeleteStudentSubject(SQLiteConnection conn, int StudentID)
         {
-            SQLiteCommand newcomand = conn.CreateCommand();
-            newcomand.CommandText = "DELETE FROM StudentSubject WHERE StudentsID =@sid";
-            newcomand.Parameters.AddWithValue("@sid", StudentID);
-            newcomand.ExecuteNonQuery();
+            using (SQLiteCommand newcomand = conn.CreateCommand()) 
+            {
+                newcomand.CommandText = "DELETE FROM StudentSubject WHERE StudentsID =@sid";
+                newcomand.Parameters.AddWithValue("@sid", StudentID);
+                newcomand.ExecuteNonQuery();
+            }
         }
     }
 }

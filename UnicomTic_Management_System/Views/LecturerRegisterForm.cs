@@ -136,12 +136,20 @@ namespace UnicomTic_Management_System.Views
 
         private void radioButton_Male_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton_Male.Checked) { label_Gender.Text = null; }
+            if (radioButton_Male.Checked) 
+            {
+                label_Gender.Text = null; 
+                lecturer.Gender = radioButton_Male.Text;
+            }
         }
 
         private void radioButton_Female_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton_Female.Checked) { label_Gender.Text = null; }
+            if (radioButton_Female.Checked) 
+            { 
+                label_Gender.Text = null;
+                lecturer.Gender = radioButton_Female.Text;
+            }
         }
 
         private void textBox_FirstName_Click(object sender, EventArgs e)
@@ -233,8 +241,6 @@ namespace UnicomTic_Management_System.Views
         {
             lecturer.DepartmentID = Convert.ToInt32((comboBox_Department.SelectedValue));
             CheckEmptyFields("btn_add");
-            if (radioButton_Male.Checked) { lecturer.Gender = radioButton_Male.Text; }
-            else if (radioButton_Female.Checked) { lecturer.Gender = radioButton_Female.Text; }
             if (checkBox_Auto.Checked) { user.UserNameCreateType = "Auto"; }
             else if (checkBox_Manual.Checked) { user.UserNameCreateType = "Manual"; }
             lecturer.Date = DateTime.Now.ToString("yyyy-MM-dd");

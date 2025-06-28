@@ -37,56 +37,59 @@ namespace UnicomTic_Management_System.Controllers
             List<Staffs> list = new List<Staffs>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Staffs";
-                using (var Readings = cmd.ExecuteReader())
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
                 {
-                    while (Readings.Read())
+                    cmd.CommandText = "SELECT * FROM Staffs";
+                    using (var Readings = cmd.ExecuteReader())
                     {
-                        if (string.IsNullOrWhiteSpace(Search))
+                        while (Readings.Read())
                         {
-                            list.Add(new Staffs
+                            if (string.IsNullOrWhiteSpace(Search))
                             {
-                                Id = Convert.ToInt32(Readings[0]),
-                                Date = Readings[1].ToString(),
-                                FirstName = Readings[2].ToString(),
-                                LastName = Readings[3].ToString(),
-                                Address = Readings[4].ToString(),
-                                Phone = Readings[5].ToString(),
-                                Gender = Readings[6].ToString(),
-                                NicNo = Readings[7].ToString(),
-                                Designation = Readings[8].ToString(),
-                                Salary = Readings[9].ToString(),
-                                UserID = Convert.ToInt32(Readings[10])
-                            });
-                        }
-                        else
-                        {
-                            for (int j = 1; j <= 9; j++)
-                            {
-                                if (Readings[j].ToString().Contains(Search))
+                                list.Add(new Staffs
                                 {
-                                    list.Add(new Staffs
+                                    Id = Convert.ToInt32(Readings[0]),
+                                    Date = Readings[1].ToString(),
+                                    FirstName = Readings[2].ToString(),
+                                    LastName = Readings[3].ToString(),
+                                    Address = Readings[4].ToString(),
+                                    Phone = Readings[5].ToString(),
+                                    Gender = Readings[6].ToString(),
+                                    NicNo = Readings[7].ToString(),
+                                    Designation = Readings[8].ToString(),
+                                    Salary = Readings[9].ToString(),
+                                    UserID = Convert.ToInt32(Readings[10])
+                                });
+                            }
+                            else
+                            {
+                                for (int j = 1; j <= 9; j++)
+                                {
+                                    if (Readings[j].ToString().Contains(Search))
                                     {
-                                        Id = Convert.ToInt32(Readings[0]),
-                                        Date = Readings[1].ToString(),
-                                        FirstName = Readings[2].ToString(),
-                                        LastName = Readings[3].ToString(),
-                                        Address = Readings[4].ToString(),
-                                        Phone = Readings[5].ToString(),
-                                        Gender = Readings[6].ToString(),
-                                        NicNo = Readings[7].ToString(),
-                                        Designation = Readings[8].ToString(),
-                                        Salary = Readings[9].ToString(),
-                                        UserID = Convert.ToInt32(Readings[10])
-                                    });
-                                    break;
+                                        list.Add(new Staffs
+                                        {
+                                            Id = Convert.ToInt32(Readings[0]),
+                                            Date = Readings[1].ToString(),
+                                            FirstName = Readings[2].ToString(),
+                                            LastName = Readings[3].ToString(),
+                                            Address = Readings[4].ToString(),
+                                            Phone = Readings[5].ToString(),
+                                            Gender = Readings[6].ToString(),
+                                            NicNo = Readings[7].ToString(),
+                                            Designation = Readings[8].ToString(),
+                                            Salary = Readings[9].ToString(),
+                                            UserID = Convert.ToInt32(Readings[10])
+                                        });
+                                        break;
+                                    }
                                 }
                             }
-                        }
 
+                        }
                     }
                 }
+                
             }
             return list;
         }
@@ -122,20 +125,22 @@ namespace UnicomTic_Management_System.Controllers
                     {
                         using (SQLiteConnection connect = DatabaseManager.GetConnection())
                         {
-                            SQLiteCommand cmd = connect.CreateCommand();
-                            cmd.CommandText = @"INSERT INTO Staffs(Date,FirstName,LastName,Address,Phone,Gender,NicNumber,Designation,Salary,UsersID)
+                            using (SQLiteCommand cmd = connect.CreateCommand()) 
+                            {
+                                cmd.CommandText = @"INSERT INTO Staffs(Date,FirstName,LastName,Address,Phone,Gender,NicNumber,Designation,Salary,UsersID)
                                         VALUES(@date,@firstname,@lastname,@address,@phone,@gender,@nic,@designation,@salary,@userid)";
-                            cmd.Parameters.AddWithValue("@date", staff.Date);
-                            cmd.Parameters.AddWithValue("@firstname", staff.FirstName);
-                            cmd.Parameters.AddWithValue("@lastname", staff.LastName);
-                            cmd.Parameters.AddWithValue("@address", staff.Address);
-                            cmd.Parameters.AddWithValue("@phone", staff.Phone);
-                            cmd.Parameters.AddWithValue("@gender", staff.Gender);
-                            cmd.Parameters.AddWithValue("@nic", staff.NicNo);
-                            cmd.Parameters.AddWithValue("@designation", staff.Designation);
-                            cmd.Parameters.AddWithValue("@salary", Convert.ToDouble(staff.Salary));
-                            cmd.Parameters.AddWithValue("@userid", staff.UserID);
-                            cmd.ExecuteNonQuery();
+                                cmd.Parameters.AddWithValue("@date", staff.Date);
+                                cmd.Parameters.AddWithValue("@firstname", staff.FirstName);
+                                cmd.Parameters.AddWithValue("@lastname", staff.LastName);
+                                cmd.Parameters.AddWithValue("@address", staff.Address);
+                                cmd.Parameters.AddWithValue("@phone", staff.Phone);
+                                cmd.Parameters.AddWithValue("@gender", staff.Gender);
+                                cmd.Parameters.AddWithValue("@nic", staff.NicNo);
+                                cmd.Parameters.AddWithValue("@designation", staff.Designation);
+                                cmd.Parameters.AddWithValue("@salary", Convert.ToDouble(staff.Salary));
+                                cmd.Parameters.AddWithValue("@userid", staff.UserID);
+                                cmd.ExecuteNonQuery();
+                            }
                             MessageBox.Show("Staff Registered Successfully");
                             status = "Success";
                         }
@@ -167,10 +172,12 @@ namespace UnicomTic_Management_System.Controllers
                 {
                     using (SQLiteConnection connect = DatabaseManager.GetConnection())
                     {
-                        SQLiteCommand cmd = connect.CreateCommand();
-                        cmd.CommandText = "DELETE FROM Staffs WHERE ID=@id";
-                        cmd.Parameters.AddWithValue("@id", staff.Id);
-                        cmd.ExecuteNonQuery();
+                        using (SQLiteCommand cmd = connect.CreateCommand()) 
+                        {
+                            cmd.CommandText = "DELETE FROM Staffs WHERE ID=@id";
+                            cmd.Parameters.AddWithValue("@id", staff.Id);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                     UserController.DeleteUser(staff.UserID);
                     MessageBox.Show("Staff Deleted Successfully");

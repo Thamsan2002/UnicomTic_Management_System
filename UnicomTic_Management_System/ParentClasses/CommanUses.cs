@@ -20,13 +20,16 @@ namespace UnicomTic_Management_System
 
         protected int GetLastInsertedId() 
         {
+            int lastId = 0;
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = "SELECT Id FROM Users ORDER BY Id DESC LIMIT 1;;"; 
-                int lastId = Convert.ToInt32(cmd.ExecuteScalar());
-                return lastId;
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
+                {
+                    cmd.CommandText = "SELECT Id FROM Users ORDER BY Id DESC LIMIT 1;;";
+                    lastId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
             }
+            return lastId;
         }
         protected string PhoneValidation(string phone)
         {

@@ -18,16 +18,18 @@ namespace UnicomTic_Management_System.Controllers
             List<Rooms> list = new List<Rooms>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Rooms";
-                var Readings = cmd.ExecuteReader();
-                while (Readings.Read())
+                using (SQLiteCommand cmd = connect.CreateCommand())
                 {
-                    list.Add(new Rooms
-                    {
-                        ID = Convert.ToInt32(Readings["ID"]),
-                        Name = Readings["Name"].ToString(),
-                    });
+                    cmd.CommandText = "SELECT * FROM Rooms";
+                    using (var Readings = cmd.ExecuteReader())
+                        while (Readings.Read())
+                        {
+                            list.Add(new Rooms
+                            {
+                                ID = Convert.ToInt32(Readings["ID"]),
+                                Name = Readings["Name"].ToString(),
+                            });
+                        }
                 }
             }
             return list;

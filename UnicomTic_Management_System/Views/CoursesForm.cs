@@ -100,6 +100,7 @@ namespace UnicomTic_Management_System.Views
             if (Deta.Contains("DepartmentName")) { label_Department.Text = "*Department is Required"; }
             courseController.AddCourse(course);
             LoadCourses();
+            textBox_Course.Clear();
 
         }
 

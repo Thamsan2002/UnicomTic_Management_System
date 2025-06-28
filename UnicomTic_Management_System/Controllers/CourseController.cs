@@ -31,35 +31,38 @@ namespace UnicomTic_Management_System.Controllers
             List<Courses> list = new List<Courses>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = @"SELECT Courses.ID, Courses.Name AS CourseName, Courses.DepartmentsID, Departments.Name AS DepartmentName
-                                    FROM Courses LEFT JOIN Departments ON Courses.DepartmentsID = Departments.ID";
-                var reading = cmd.ExecuteReader();
-                while (reading.Read())
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
                 {
-                    if (string.IsNullOrWhiteSpace(departmentName))
-                    {
-                        list.Add(new Courses
+                    cmd.CommandText = @"SELECT Courses.ID, Courses.Name AS CourseName, Courses.DepartmentsID, Departments.Name AS DepartmentName
+                                    FROM Courses LEFT JOIN Departments ON Courses.DepartmentsID = Departments.ID";
+                    using (var reading = cmd.ExecuteReader())
+                        while (reading.Read())
                         {
-                            Id = Convert.ToInt32(reading["ID"]),
-                            Name = reading["CourseName"].ToString(),
-                            DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
-                            DepartmentName = reading["DepartmentName"].ToString(),
-                        });
-                    }
-                    else if (departmentName == reading["DepartmentName"].ToString())
-                    {
-                        list.Add(new Courses
-                        {
-                            Id = Convert.ToInt32(reading["ID"]),
-                            Name = reading["CourseName"].ToString(),
-                            DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
-                            DepartmentName = reading["DepartmentName"].ToString(),
+                            if (string.IsNullOrWhiteSpace(departmentName))
+                            {
+                                list.Add(new Courses
+                                {
+                                    Id = Convert.ToInt32(reading["ID"]),
+                                    Name = reading["CourseName"].ToString(),
+                                    DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
+                                    DepartmentName = reading["DepartmentName"].ToString(),
+                                });
+                            }
+                            else if (departmentName == reading["DepartmentName"].ToString())
+                            {
+                                list.Add(new Courses
+                                {
+                                    Id = Convert.ToInt32(reading["ID"]),
+                                    Name = reading["CourseName"].ToString(),
+                                    DepartmentID = Convert.ToInt32(reading["DepartmentsID"]),
+                                    DepartmentName = reading["DepartmentName"].ToString(),
 
-                        });
-                    }
+                                });
+                            }
 
+                        }
                 }
+                
             }
             return list;
         }
@@ -71,11 +74,13 @@ namespace UnicomTic_Management_System.Controllers
             {
                 using (SQLiteConnection connect = DatabaseManager.GetConnection())
                 {
-                    SQLiteCommand cmd = connect.CreateCommand();
-                    cmd.CommandText = "INSERT INTO Courses(Name,DepartmentsID) VALUES(@name,@departmentid)";
-                    cmd.Parameters.AddWithValue("@name", course.Name);
-                    cmd.Parameters.AddWithValue("@departmentid", course.DepartmentID);
-                    cmd.ExecuteNonQuery();
+                    using (SQLiteCommand cmd = connect.CreateCommand()) 
+                    {
+                        cmd.CommandText = "INSERT INTO Courses(Name,DepartmentsID) VALUES(@name,@departmentid)";
+                        cmd.Parameters.AddWithValue("@name", course.Name);
+                        cmd.Parameters.AddWithValue("@departmentid", course.DepartmentID);
+                        cmd.ExecuteNonQuery();
+                    }
                     MessageBox.Show("Successfully Course Added");
                 }
             }
@@ -88,21 +93,21 @@ namespace UnicomTic_Management_System.Controllers
             {
                 using(SQLiteConnection connect = DatabaseManager.GetConnection()) 
                 {
-                    SQLiteCommand cmd = connect.CreateCommand();
-                    cmd.CommandText= "SELECT COUNT(*) FROM Subjects WHERE ID=@id";
-                    cmd.Parameters.AddWithValue("@id",course.Id);
-                    int count=Convert.ToInt32(cmd.ExecuteScalar());
-                    if (count > 0) { MessageBox.Show($"Delete Failed!\nThis Course Have Active Subjects"); }
-                    else 
+                    using (SQLiteCommand cmd = connect.CreateCommand()) 
                     {
-                        cmd.CommandText = "DELETE FROM Courses WHERE ID=@id";
+                        cmd.CommandText = "SELECT COUNT(*) FROM Subjects WHERE ID=@id";
                         cmd.Parameters.AddWithValue("@id", course.Id);
-                        cmd.ExecuteNonQuery ();
-                        MessageBox.Show("Deleted Successfully.");
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        if (count > 0) { MessageBox.Show($"Delete Failed!\nThis Course Have Active Subjects"); }
+                        else
+                        {
+                            cmd.CommandText = "DELETE FROM Courses WHERE ID=@id";
+                            cmd.Parameters.AddWithValue("@id", course.Id);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Deleted Successfully.");
+                        }
                     }
                 }
-                
-
             }
             else{ MessageBox.Show("Select a Course to Delete!"); }
         }

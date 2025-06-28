@@ -24,8 +24,6 @@ namespace UnicomTic_Management_System.Views
 
         private void label1_Click(object sender, EventArgs e)
         {
-            //object result = Migration.ExistsUsersTable();
-            //label1.Text=result.ToString();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

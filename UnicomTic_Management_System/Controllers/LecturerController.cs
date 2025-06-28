@@ -36,107 +36,117 @@ namespace UnicomTic_Management_System.Controllers
             List<Lecturers> list = new List<Lecturers>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = @"SELECT Lecturers.ID, Lecturers.LastName AS Name, Lecturers.DepartmentsID, Departments.Name AS DepartmentName
-                                    FROM Lecturers LEFT JOIN Departments ON Lecturers.DepartmentsID = Departments.ID";
-                var reading = cmd.ExecuteReader();
-                while (reading.Read())
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
                 {
-                    if (string.IsNullOrWhiteSpace(departmentName))
+                    cmd.CommandText = @"SELECT Lecturers.ID, Lecturers.LastName AS Name, Lecturers.DepartmentsID, Departments.Name AS DepartmentName
+                                    FROM Lecturers LEFT JOIN Departments ON Lecturers.DepartmentsID = Departments.ID";
+                    var reading = cmd.ExecuteReader();
+                    while (reading.Read())
                     {
-                        list.Add(new Lecturers
+                        if (string.IsNullOrWhiteSpace(departmentName))
                         {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            LastName = reading["Name"].ToString()
-                        });
-                    }
-                    else if (departmentName == reading["DepartmentName"].ToString())
-                    {
-                        list.Add(new Lecturers
+                            list.Add(new Lecturers
+                            {
+                                ID = Convert.ToInt32(reading["ID"]),
+                                LastName = reading["Name"].ToString()
+                            });
+                        }
+                        else if (departmentName == reading["DepartmentName"].ToString())
                         {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            LastName = reading["Name"].ToString()
-                        });
-                    }
+                            list.Add(new Lecturers
+                            {
+                                ID = Convert.ToInt32(reading["ID"]),
+                                LastName = reading["Name"].ToString()
+                            });
+                        }
 
+                    }
                 }
+                
                 return list;
             }
         }
         private string EmployeeNum() 
         {
+            string Emplyeenum;
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = "SELECT EmployeeNo FROM Lecturers ORDER BY Id DESC LIMIT 1;";
-                object lastId = cmd.ExecuteScalar();
-                if (lastId == null || lastId == DBNull.Value) { return "LEC1000"; }
-                else
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
                 {
-                    return ($"LEC{ (Convert.ToInt32(lastId.ToString().Substring(3)) + 1).ToString()}");
+                    cmd.CommandText = "SELECT EmployeeNo FROM Lecturers ORDER BY Id DESC LIMIT 1;";
+                    object lastId = cmd.ExecuteScalar();
+                    if (lastId == null || lastId == DBNull.Value) { Emplyeenum = "LEC1000"; }
+                    else
+                    {
+                        Emplyeenum =($"LEC{(Convert.ToInt32(lastId.ToString().Substring(3)) + 1).ToString()}");
+                    }
                 }
             }
+            return Emplyeenum ;
         }
         public List<Lecturers> LoadLecturer(string Search)
         {
             List<Lecturers> list = new List<Lecturers>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = @"SELECT Lecturers.* , Departments.Name AS DepartmentName, Lecturers.DepartmentsID AS DepartmentID FROM Lecturers
-                                    LEFT JOIN Departments ON Departments.ID = Lecturers.DepartmentsID";
-                using (var Readings = cmd.ExecuteReader())
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
                 {
-                    while (Readings.Read())
+                    cmd.CommandText = @"SELECT Lecturers.* , Departments.Name AS DepartmentName, Lecturers.DepartmentsID AS DepartmentID FROM Lecturers
+                                    LEFT JOIN Departments ON Departments.ID = Lecturers.DepartmentsID";
+                    using (var Readings = cmd.ExecuteReader())
                     {
-                        if (string.IsNullOrWhiteSpace(Search))
+                        while (Readings.Read())
                         {
-                            list.Add(new Lecturers
+                            if (string.IsNullOrWhiteSpace(Search))
                             {
-                                ID = Convert.ToInt32(Readings["ID"]),
-                                Date = Readings["Date"].ToString(),
-                                FirstName = Readings["FirstName"].ToString(),
-                                LastName = Readings["LastName"].ToString(),
-                                Address = Readings["Address"].ToString(),
-                                Phone = Readings["Phone"].ToString(),
-                                Gender = Readings["Gender"].ToString(),
-                                NicNo = Readings["NicNumber"].ToString(),
-                                EmployeeNo = Readings["EmployeeNo"].ToString(),
-                                Salary = Readings["Salary"].ToString(),
-                                UserID = Convert.ToInt32(Readings["UsersID"]),
-                                DepartmentID = Convert.ToInt32(Readings["DepartmentID"]),
-                                DepartmentName = Readings["DepartmentName"].ToString()
-                            });
-                        }
-                        else
-                        {
-                            for (int j = 1; j <= 9; j++)
-                            {
-                                if (Readings[j].ToString().Contains(Search) || Readings["DepartmentName"].ToString().Contains(Search))
+                                list.Add(new Lecturers
                                 {
-                                    list.Add(new Lecturers
+                                    ID = Convert.ToInt32(Readings["ID"]),
+                                    Date = Readings["Date"].ToString(),
+                                    FirstName = Readings["FirstName"].ToString(),
+                                    LastName = Readings["LastName"].ToString(),
+                                    Address = Readings["Address"].ToString(),
+                                    Phone = Readings["Phone"].ToString(),
+                                    Gender = Readings["Gender"].ToString(),
+                                    NicNo = Readings["NicNumber"].ToString(),
+                                    EmployeeNo = Readings["EmployeeNo"].ToString(),
+                                    Salary = Readings["Salary"].ToString(),
+                                    UserID = Convert.ToInt32(Readings["UsersID"]),
+                                    DepartmentID = Convert.ToInt32(Readings["DepartmentID"]),
+                                    DepartmentName = Readings["DepartmentName"].ToString()
+                                });
+                            }
+                            else
+                            {
+                                for (int j = 1; j <= 9; j++)
+                                {
+                                    if (Readings[j].ToString().Contains(Search) || Readings["DepartmentName"].ToString().Contains(Search))
                                     {
-                                        ID = Convert.ToInt32(Readings["ID"]),
-                                        Date = Readings["Date"].ToString(),
-                                        FirstName = Readings["FirstName"].ToString(),
-                                        LastName = Readings["LastName"].ToString(),
-                                        Address = Readings["Address"].ToString(),
-                                        Phone = Readings["Phone"].ToString(),
-                                        Gender = Readings["Gender"].ToString(),
-                                        NicNo = Readings["NicNumber"].ToString(),
-                                        EmployeeNo = Readings["EmployeeNo"].ToString(),
-                                        Salary = Readings["Salary"].ToString(),
-                                        DepartmentID = Convert.ToInt32(Readings["DepartmentID"]),
-                                        DepartmentName = Readings["DepartmentName"].ToString(),
-                                        UserID = Convert.ToInt32(Readings["UsersID"])
-                                    });
-                                    break;
+                                        list.Add(new Lecturers
+                                        {
+                                            ID = Convert.ToInt32(Readings["ID"]),
+                                            Date = Readings["Date"].ToString(),
+                                            FirstName = Readings["FirstName"].ToString(),
+                                            LastName = Readings["LastName"].ToString(),
+                                            Address = Readings["Address"].ToString(),
+                                            Phone = Readings["Phone"].ToString(),
+                                            Gender = Readings["Gender"].ToString(),
+                                            NicNo = Readings["NicNumber"].ToString(),
+                                            EmployeeNo = Readings["EmployeeNo"].ToString(),
+                                            Salary = Readings["Salary"].ToString(),
+                                            DepartmentID = Convert.ToInt32(Readings["DepartmentID"]),
+                                            DepartmentName = Readings["DepartmentName"].ToString(),
+                                            UserID = Convert.ToInt32(Readings["UsersID"])
+                                        });
+                                        break;
+                                    }
                                 }
                             }
-                        }
 
+                        }
                     }
                 }
+                
             }
             return list;
         }
@@ -172,22 +182,24 @@ namespace UnicomTic_Management_System.Controllers
                     {
                         using (SQLiteConnection connect = DatabaseManager.GetConnection())
                         {
-                            SQLiteCommand cmd = connect.CreateCommand();
-                            cmd.CommandText = @"INSERT INTO Lecturers(Date,FirstName,LastName,Phone,Address,NicNumber,Gender,EmployeeNo,Salary,DepartmentsID,UsersID)
+                            using (SQLiteCommand cmd = connect.CreateCommand()) 
+                            {
+                                cmd.CommandText = @"INSERT INTO Lecturers(Date,FirstName,LastName,Phone,Address,NicNumber,Gender,EmployeeNo,Salary,DepartmentsID,UsersID)
                                         VALUES(@date,@firstname,@lastname,@phone,@address,@nic,@gender,@employeeno,@salary,@departmentid,@userid)";
-                            cmd.Parameters.AddWithValue("@date", lecturer.Date);
-                            cmd.Parameters.AddWithValue("@firstname", lecturer.FirstName);
-                            cmd.Parameters.AddWithValue("@lastname", lecturer.LastName);
-                            cmd.Parameters.AddWithValue("@phone", lecturer.Phone);
-                            cmd.Parameters.AddWithValue("@address", lecturer.Address);
-                            cmd.Parameters.AddWithValue("@nic", lecturer.NicNo);
-                            cmd.Parameters.AddWithValue("@gender", lecturer.Gender);
-                            cmd.Parameters.AddWithValue("@employeeno",lecturer.EmployeeNo);
-                            cmd.Parameters.AddWithValue("@salary",lecturer.Salary);
-                            //cmd.Parameters.AddWithValue("@courseid",lecturer.CourseID);
-                            cmd.Parameters.AddWithValue("@departmentid",lecturer.DepartmentID);
-                            cmd.Parameters.AddWithValue("@userid", lecturer.UserID);
-                            cmd.ExecuteNonQuery();
+                                cmd.Parameters.AddWithValue("@date", lecturer.Date);
+                                cmd.Parameters.AddWithValue("@firstname", lecturer.FirstName);
+                                cmd.Parameters.AddWithValue("@lastname", lecturer.LastName);
+                                cmd.Parameters.AddWithValue("@phone", lecturer.Phone);
+                                cmd.Parameters.AddWithValue("@address", lecturer.Address);
+                                cmd.Parameters.AddWithValue("@nic", lecturer.NicNo);
+                                cmd.Parameters.AddWithValue("@gender", lecturer.Gender);
+                                cmd.Parameters.AddWithValue("@employeeno", lecturer.EmployeeNo);
+                                cmd.Parameters.AddWithValue("@salary", lecturer.Salary);
+                                cmd.Parameters.AddWithValue("@departmentid", lecturer.DepartmentID);
+                                cmd.Parameters.AddWithValue("@userid", lecturer.UserID);
+                                cmd.ExecuteNonQuery();
+                            }
+                            
                             MessageBox.Show("Lecturer Registered Successfully");
                             status = "Success";
                         }
@@ -213,30 +225,37 @@ namespace UnicomTic_Management_System.Controllers
         }
         public void DeleteLecturer(Lecturers lecturer)
         {
+            int count = 0;
             if (lecturer.ID == 0) { MessageBox.Show("Select a Staff!"); }
             else
             {
                 using (SQLiteConnection connect = DatabaseManager.GetConnection())
                 {
-                    SQLiteCommand cmd = connect.CreateCommand();
-                    cmd.CommandText = "SELECT COUNT(*) FROM Subjects WHERE LecturersID=@lid";
-                    cmd.Parameters.AddWithValue("@lid", lecturer.ID);
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    if (0 < count) { MessageBox.Show($"This Lecturer Teaching {count} Subjects Now\nRemove Subject First! "); }
-                    else 
+                    using (SQLiteCommand cmd = connect.CreateCommand())
                     {
-                        DialogResult result = MessageBox.Show("Confirm Delete This Staff", "Confirmation", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
-                        {
-                            cmd.CommandText = "DELETE FROM Lecturers WHERE ID=@id";
-                            cmd.Parameters.AddWithValue("@id", lecturer.ID);
-                            cmd.ExecuteNonQuery();
-                            LecturerStudent.DeleteLecturerStudent(connect,lecturer.ID);
-                            UserController.DeleteUser(lecturer.UserID);
-                            MessageBox.Show("Lecture Deleted Successfully");
-                        }
-                        
+                        cmd.CommandText = "SELECT COUNT(*) FROM Subjects WHERE LecturersID=@lid";
+                        cmd.Parameters.AddWithValue("@lid", lecturer.ID);
+                        count = Convert.ToInt32(cmd.ExecuteScalar());
                     }
+                        if (0 < count) { MessageBox.Show($"This Lecturer Teaching {count} Subjects Now\nRemove Subject First! "); }
+                        else
+                        {
+                            DialogResult result = MessageBox.Show("Confirm Delete This Staff", "Confirmation", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
+                            {
+                                using (SQLiteCommand cmd = connect.CreateCommand()) 
+                                {
+                                    cmd.CommandText = "DELETE FROM Lecturers WHERE ID=@id";
+                                    cmd.Parameters.AddWithValue("@id", lecturer.ID);
+                                    cmd.ExecuteNonQuery();
+                                }
+                                LecturerStudent.DeleteLecturerStudent(connect, lecturer.ID);
+                                UserController.DeleteUser(lecturer.UserID);
+                                MessageBox.Show("Lecture Deleted Successfully");
+                            }
+
+                        }
+                    
                 }
                 
             }

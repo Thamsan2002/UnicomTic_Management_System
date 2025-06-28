@@ -331,7 +331,7 @@
             // radioButton_Male
             // 
             this.radioButton_Male.AutoSize = true;
-            this.radioButton_Male.Location = new System.Drawing.Point(159, 274);
+            this.radioButton_Male.Location = new System.Drawing.Point(158, 274);
             this.radioButton_Male.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_Male.Name = "radioButton_Male";
             this.radioButton_Male.Size = new System.Drawing.Size(58, 20);

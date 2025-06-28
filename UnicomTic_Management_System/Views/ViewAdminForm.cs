@@ -31,7 +31,6 @@ namespace UnicomTic_Management_System.Views
             AdminController adminController = new AdminController();
             dataGridView_Admin.DataSource = adminController.LoadAdmins(textBox_Search.Text);
             dataGridView_Admin.Columns["UserID"].Visible = false;
-            dataGridView_Admin.Columns["AccessLevel"].Visible = false;
             
         }
         private void ViewAdminForm_Load(object sender, EventArgs e)

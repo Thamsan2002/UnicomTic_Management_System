@@ -57,6 +57,7 @@ namespace UnicomTic_Management_System.Views
         {
             departmentController.AddDepartment(department);
             dataGridView_Department.DataSource = departmentController.ViewDepartments();
+            textBox_Department.Clear();
         }
 
 

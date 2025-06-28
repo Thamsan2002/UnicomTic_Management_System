@@ -16,12 +16,14 @@ namespace UnicomTic_Management_System.Controllers
         {
             using(SQLiteConnection connect = DatabaseManager.GetConnection()) 
             {
-                SQLiteCommand cmd =connect.CreateCommand();
-                cmd.CommandText = @"INSERT INTO ExamMarks (ExamsID, StudentsID)SELECT                              
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
+                {
+                    cmd.CommandText = @"INSERT INTO ExamMarks (ExamsID, StudentsID)SELECT                              
                                     @id, StudentsID FROM StudentSubject WHERE SubjectsID = @sid;";
-                cmd.Parameters.AddWithValue("@id",exam.ID);
-                cmd.Parameters.AddWithValue("@sid",exam.SubjectID);
-                cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@id", exam.ID);
+                    cmd.Parameters.AddWithValue("@sid", exam.SubjectID);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
         public List<Marks> ViewExamMArks(string role, int UserID,string Search)
@@ -34,65 +36,67 @@ namespace UnicomTic_Management_System.Controllers
             List<Marks> list = new List<Marks>();
             using (SQLiteConnection connect = DatabaseManager.GetConnection())
             {
-                SQLiteCommand cmd = connect.CreateCommand();
-                cmd.CommandText = @"SELECT  ExamMarks.ID, ExamMarks.ExamsID, ExamMarks.StudentsID, ExamMarks.Score,
+                using (SQLiteCommand cmd = connect.CreateCommand()) 
+                {
+                    cmd.CommandText = @"SELECT  ExamMarks.ID, ExamMarks.ExamsID, ExamMarks.StudentsID, ExamMarks.Score,
                                     Exams.Heading AS ExamName, Students.LastName AS StudentName
                                     FROM ExamMarks LEFT JOIN Exams ON Exams.ID = ExamMarks.ExamsID
                                     LEFT JOIN Students ON Students.ID = ExamMarks.StudentsID";
-                var reading = cmd.ExecuteReader();
-                while (reading.Read())
-                {
-                    if (role != "Student" && string.IsNullOrWhiteSpace(Search))
-                    {
-                        list.Add(new Marks
+                    using (var reading = cmd.ExecuteReader())
+                        while (reading.Read())
                         {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            ExamName = reading["ExamName"].ToString(),
-                            ExamID = Convert.ToInt32(reading["ExamsID"]),
-                            StudentName = reading["StudentName"].ToString(),
-                            StudentID = Convert.ToInt32(reading["StudentsID"]),
-                            Score = reading["Score"].ToString()
-                        });
-                    }
-                    else if(role != "Student" && (reading["ExamName"].ToString().Contains(Search) 
-                        || reading["StudentName"].ToString().Contains(Search))) 
-                    {
-                        list.Add(new Marks
-                        {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            ExamName = reading["ExamName"].ToString(),
-                            ExamID = Convert.ToInt32(reading["ExamsID"]),
-                            StudentName = reading["StudentName"].ToString(),
-                            StudentID = Convert.ToInt32(reading["StudentsID"]),
-                            Score = reading["Score"].ToString()
-                        });
-                    }
-                    else if (reading["StudentsID"].ToString() == StudentID.ToString() && string.IsNullOrWhiteSpace(Search))
-                    {
-                        list.Add(new Marks
-                        {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            ExamName = reading["ExamName"].ToString(),
-                            ExamID = Convert.ToInt32(reading["ExamsID"]),
-                            StudentName = reading["StudentName"].ToString(),
-                            StudentID = Convert.ToInt32(reading["StudentsID"]),
-                            Score = reading["Score"].ToString()
-                        });
-                    }
-                    else if (reading["StudentsID"].ToString() == StudentID.ToString() &&
-                        ((reading["ExamName"].ToString().Contains(Search) || reading["StudentName"].ToString().Contains(Search))))
-                    {
-                        list.Add(new Marks
-                        {
-                            ID = Convert.ToInt32(reading["ID"]),
-                            ExamName = reading["ExamName"].ToString(),
-                            ExamID = Convert.ToInt32(reading["ExamsID"]),
-                            StudentName = reading["StudentName"].ToString(),
-                            StudentID = Convert.ToInt32(reading["StudentsID"]),
-                            Score = reading["Score"].ToString()
-                        });
-                    }
+                            if (role != "Student" && string.IsNullOrWhiteSpace(Search))
+                            {
+                                list.Add(new Marks
+                                {
+                                    ID = Convert.ToInt32(reading["ID"]),
+                                    ExamName = reading["ExamName"].ToString(),
+                                    ExamID = Convert.ToInt32(reading["ExamsID"]),
+                                    StudentName = reading["StudentName"].ToString(),
+                                    StudentID = Convert.ToInt32(reading["StudentsID"]),
+                                    Score = reading["Score"].ToString()
+                                });
+                            }
+                            else if (role != "Student" && (reading["ExamName"].ToString().Contains(Search)
+                                || reading["StudentName"].ToString().Contains(Search)))
+                            {
+                                list.Add(new Marks
+                                {
+                                    ID = Convert.ToInt32(reading["ID"]),
+                                    ExamName = reading["ExamName"].ToString(),
+                                    ExamID = Convert.ToInt32(reading["ExamsID"]),
+                                    StudentName = reading["StudentName"].ToString(),
+                                    StudentID = Convert.ToInt32(reading["StudentsID"]),
+                                    Score = reading["Score"].ToString()
+                                });
+                            }
+                            else if (reading["StudentsID"].ToString() == StudentID.ToString() && string.IsNullOrWhiteSpace(Search))
+                            {
+                                list.Add(new Marks
+                                {
+                                    ID = Convert.ToInt32(reading["ID"]),
+                                    ExamName = reading["ExamName"].ToString(),
+                                    ExamID = Convert.ToInt32(reading["ExamsID"]),
+                                    StudentName = reading["StudentName"].ToString(),
+                                    StudentID = Convert.ToInt32(reading["StudentsID"]),
+                                    Score = reading["Score"].ToString()
+                                });
+                            }
+                            else if (reading["StudentsID"].ToString() == StudentID.ToString() &&
+                                ((reading["ExamName"].ToString().Contains(Search) || reading["StudentName"].ToString().Contains(Search))))
+                            {
+                                list.Add(new Marks
+                                {
+                                    ID = Convert.ToInt32(reading["ID"]),
+                                    ExamName = reading["ExamName"].ToString(),
+                                    ExamID = Convert.ToInt32(reading["ExamsID"]),
+                                    StudentName = reading["StudentName"].ToString(),
+                                    StudentID = Convert.ToInt32(reading["StudentsID"]),
+                                    Score = reading["Score"].ToString()
+                                });
+                            }
 
+                        }
                 }
             }
             return list;
@@ -104,10 +108,12 @@ namespace UnicomTic_Management_System.Controllers
             {
                 using (SQLiteConnection connect = DatabaseManager.GetConnection())
                 {
-                    SQLiteCommand cmd = connect.CreateCommand();
-                    cmd.CommandText = "DELETE FROM ExamMarks WHERE ID=@id";
-                    cmd.Parameters.AddWithValue("@id", ID);
-                    cmd.ExecuteNonQuery();
+                    using (SQLiteCommand cmd = connect.CreateCommand()) 
+                    {
+                        cmd.CommandText = "DELETE FROM ExamMarks WHERE ID=@id";
+                        cmd.Parameters.AddWithValue("@id", ID);
+                        cmd.ExecuteNonQuery();
+                    }
                     MessageBox.Show("SuccessFully Mark History Removed");
                 }
             }

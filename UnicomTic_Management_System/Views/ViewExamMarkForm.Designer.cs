@@ -38,9 +38,11 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(168, 95);
+            this.dataGridView.Location = new System.Drawing.Point(224, 117);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(452, 308);
+            this.dataGridView.RowHeadersWidth = 51;
+            this.dataGridView.Size = new System.Drawing.Size(588, 379);
             this.dataGridView.TabIndex = 5;
             this.dataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_CellMouseDoubleClick);
             this.dataGridView.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_RowHeaderMouseDoubleClick);
@@ -48,39 +50,43 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(340, 32);
+            this.label1.Location = new System.Drawing.Point(453, 39);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.Size = new System.Drawing.Size(126, 16);
             this.label1.TabIndex = 4;
             this.label1.Text = "EXAM AND MARKS";
             // 
             // textBox_Search
             // 
-            this.textBox_Search.Location = new System.Drawing.Point(212, 69);
+            this.textBox_Search.Location = new System.Drawing.Point(283, 85);
+            this.textBox_Search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_Search.Name = "textBox_Search";
-            this.textBox_Search.Size = new System.Drawing.Size(408, 20);
+            this.textBox_Search.Size = new System.Drawing.Size(529, 22);
             this.textBox_Search.TabIndex = 6;
             this.textBox_Search.TextChanged += new System.EventHandler(this.textBox_Search_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(165, 76);
+            this.label2.Location = new System.Drawing.Point(220, 94);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(50, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "Search";
             // 
             // ViewExamMarkForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 426);
+            this.ClientSize = new System.Drawing.Size(1068, 524);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox_Search);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ViewExamMarkForm";
             this.Text = "ViewExamMarkForm";
             this.Load += new System.EventHandler(this.ViewExamMarkForm_Load);
